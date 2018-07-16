@@ -16,6 +16,17 @@
     width : 50px;
     border-radius: 50%;
     margin-right : 15px;
+    animation : 1s retateFriends infinite ease-in-out;
+}
+
+@keyframes retateFriends {
+    0% {
+        transform: rotateY(0deg)
+    } 50% {
+        transform: rotateY(180deg) scale(0.5);
+    } 100% {
+        transform: rotateY(360deg);
+    }
 }
 
 .chats__list .chats__chat a {
@@ -59,6 +70,11 @@
     font-size: 20px;
     color: #523737;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-    
+    transition: color .3s, background .3s, transform .5s ease-in-out;
+}
 
+.chat-btn:hover {
+    color: white;
+    background-color: #523737;
+    transform: rotateY(1turn)
 }
