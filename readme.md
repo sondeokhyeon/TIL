@@ -4,5 +4,6 @@
 1. 반응형 nav
 2. particleJS 
 3. parallax
+4. parallax2
 
 ---
