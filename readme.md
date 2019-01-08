@@ -5,5 +5,6 @@
 2. particleJS 
 3. parallax
 4. parallax2
+5. ContentsSlider
 
 ---
