@@ -20,6 +20,10 @@ public class SampleController {
         throw new SampleException();
     }
 
+    @GetMapping("/hello4")
+    public String hello4() {
+        return "hello4";
+    }
 
     @ExceptionHandler(SampleException.class)
     public @ResponseBody AppError sampleError(SampleException e) {
