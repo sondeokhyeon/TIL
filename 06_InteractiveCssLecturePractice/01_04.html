@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .world {
+            width: 80vw;
+            height: 60vh;
+            background: #fff000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* perspective: 400px; */
+        }
+        .card {
+            width:100px;
+            height: 150px;
+            border-radius: 0.5em;
+            background: red;
+            margin : 1em;
+            display: flex;
+            font-size: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            transform: perspective(500px) rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="world">
+        <div class="card">Card</div>
+        <div class="card">Card</div>
+        <div class="card">Card</div>
+    </div>
+</body>
+</html>
