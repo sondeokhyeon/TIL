@@ -10,7 +10,12 @@
         .characters {
             display: flex;
             background: #fff000;
-            align-items: flex-end;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .ilbuni {
+            cursor: pointer;
         }
 
         .ilbuni img {
@@ -34,6 +39,9 @@
         <div class="ilbuni c">
             <img src="./img/ilbuni_2.png" alt="">
         </div>
+        <div class="ilbuni d">
+            <img src="./img/ilbuni_3.png" alt="">
+        </div>
     </div>
 
     <script>
@@ -41,13 +49,15 @@
         // window.addEventListener('DOMContentLoaded', function() {
 
         (function() {
-            const ilbuni = document.querySelector('.ilbuni.c')
+            const ilbuni = document.querySelector('.characters')
 
-            function clickInbuniHandler() {
-                ilbuni.classList.toggle('special');
+            function clickHandler(e) {
+                // console.log(this)
+                //console.log(e.currentTarget)
+                console.log(e.target);
             }
 
-            ilbuni.addEventListener('click', clickInbuniHandler);
+            ilbuni.addEventListener('click', clickHandler);
         })();
     </script>
 
