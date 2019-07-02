@@ -28,7 +28,7 @@ function addSecond() {
 
 // reducer
 
-const TIME_DURATION = 1500;
+const TIMER_DURATION = 1500;
 
 const initalState = {
   isPlaying: false,
@@ -44,6 +44,8 @@ function reducer(state = initalState, action) {
       return applyRestartTimer(state);
     case ADD_SECOND:
       return applyAddSecond(state);
+    default:
+      return state;
   }
 }
 
@@ -80,12 +82,13 @@ function applyAddSecond(state) {
 
 // export Action creators
 
-const actionCreator = {
+const actionCreators = {
   startTimer,
   restartTimer,
   addSecond
 };
 
+export { actionCreators };
 // export Reducer
 
 export default reducer;
