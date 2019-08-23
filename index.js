@@ -6,4 +6,11 @@ const server = new GraphQLServer({
     resolvers
 })
 
-server.start(() => console.log("Graphql server running..."));
+const options = {
+    port: 4000
+}
+
+server.start((options) => console.log("Graphql server running..."));
+
+// Github URL 
+// https://github.com/prisma/graphql-yoga
