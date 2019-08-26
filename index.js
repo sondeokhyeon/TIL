@@ -10,7 +10,12 @@ const options = {
     port: 4000
 }
 
-server.start((options) => console.log("Graphql server running..."));
+server.start((options) => {
+    const {port} = options
+    return (
+        console.log(`Graphql server running...port number is ${port}`)
+    )
+});
 
 // Github URL 
 // https://github.com/prisma/graphql-yoga
