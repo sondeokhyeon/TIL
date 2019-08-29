@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.4/redux.min.js"></script>
+    <style>
+      .item {
+        width: 150px;
+        height: 150px;
+        border: 3px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <div class="item" id="red"></div>
+      <div class="item" id="blue"></div>
+      <div class="item" id="green"></div>
+    </div>
+  </body>
+  <script>
+    function reducer(state, action) {
+      console.log(state, action);
+      if (state === undefined) {
+        return {
+          color: "skyblue"
+        };
+      }
+      let newState;
+      if (action.type === "CHANGE_COLOR") {
+        newState = Object.assign({}, state, {
+          color: action.color
+        });
+      }
+      return newState;
+    }
+    const store = Redux.createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
+
+    function red() {
+      let state = store.getState();
+      document.querySelector(
+        "#red"
+      ).innerHTML = `<div class="item" style="background-color:${state.color};">
+                <button type="button" onclick="store.dispatch({type:'CHANGE_COLOR', color:'red'})">Red</button>
+            </div>`;
+    }
+    store.subscribe(red);
+    red();
+    function blue() {
+      let state = store.getState();
+      document.querySelector(
+        "#blue"
+      ).innerHTML = `<div class="item" style="background-color:${state.color};">
+                <button type="button" onclick="store.dispatch({type:'CHANGE_COLOR', color:'blue'})">blue</button>
+            </div>`;
+    }
+    store.subscribe(blue);
+    blue();
+    function green() {
+      let state = store.getState();
+      document.querySelector(
+        "#green"
+      ).innerHTML = `<div class="item" style="background-color:${state.color};">
+                <button type="button" onclick="store.dispatch({type:'CHANGE_COLOR', color:'green'})">green</button>
+            </div>`;
+    }
+    store.subscribe(green);
+    green();
+  </script>
+</html>
