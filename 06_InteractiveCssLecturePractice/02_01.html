@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .container{
+            height: 80vh;
+            background:gray;
+            display: flex;
+            /* flex-direction: row */
+            /* justify-content: flex-start; */
+            /* align-items: center; */
+        }
+        .item {
+            padding:2em;
+            border: 3px solid black;
+            background: white;
+            font-size:3rem;
+            padding:0;
+            /* flex-grow: 1;
+            flex-basis: 0; */
+            flex :1;
+        }
+        /* .item:nth-child(1) {flex-grow: 1;}
+        .item:nth-child(2) {flex-grow: 5;}
+        .item:nth-child(3) {flex-grow: 3;}
+        .item:nth-child(4) {flex-grow: 2;}
+        .item:nth-child(5) {flex-grow: 1;} */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">AA</div>
+        <div class="item">B</div>
+        <div class="item">CC</div>
+        <div class="item">D</div>
+        <div class="item">EE</div>
+    </div>
+</body>
+</html>
