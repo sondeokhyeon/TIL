@@ -1,0 +1,17 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "babel-node": "^0.0.1-security",
+    "babel-node:comment" : "주석을 뭐이리 써야되냐 이상하구만... 여튼 위에것은 nodeJS로 바벨(ES6)돌릴때 사용 ",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015:comment" :  "ECMA2015 지정용" 
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "babel-node ./src/index.js ",
+    "compile": "babel ./src -d ./build"
+  }
+}
