@@ -1,11 +1,19 @@
 import React from "react";
 
-const List = ({todos}) => {
-    const todoList = todos.map( (todo, i) => <li key={i}>{todo}</li> )
-    return (
-        <ul>
-            {todoList}
-        </ul>
-    )
+const List = ({todos, loading}) => {
+    if(!loading) {
+        return (
+            <div>loading....</div>
+        )
+    } else {
+        const todoList = todos.map( (todo) => <li key={todo.id}>{todo.name}</li> )
+        return (
+            <ul>
+                {todoList}
+            </ul>
+        )
+    }
+
+
 }
 export default List
