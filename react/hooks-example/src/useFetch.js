@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
 export default (fn, url) => {
     const [loading, setLoading] = useState(false);
@@ -7,6 +7,9 @@ export default (fn, url) => {
       setTimeout( async () => {
         const response = await fetch(url)
         const todos = await response.json()
+         todos.forEach(todo => {
+             todo.status = 'on'
+         });
         setLoading(true)
         fn(todos)
       }, 1000)

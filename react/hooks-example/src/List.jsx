@@ -1,19 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
+import {TodoContext} from './App'
+import Item  from './Item'
 
-const List = ({todos, loading}) => {
-    if(!loading) {
-        return (
-            <div>loading....</div>
-        )
-    } else {
-        const todoList = todos.map( (todo) => <li key={todo.id}>{todo.name}</li> )
-        return (
-            <ul>
-                {todoList}
-            </ul>
-        )
-    }
+const List = () => {
 
+    const {todos, loading, changeTodoStatus} = useContext(TodoContext);
 
+    let todoList = <div>loading....</div>    
+    if(loading) todoList = todos.map((todo) => <Item key={todo.id} todo={todo} changeTodoStatus={changeTodoStatus}/>)
+    return (
+        <ul>
+            {todoList }
+        </ul>
+    )
 }
 export default List
