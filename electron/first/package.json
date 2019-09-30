@@ -1,0 +1,39 @@
+{
+  "build": {
+    "productName": "HelloElectron",
+    "appId": "com.electron.hello",
+    "asar": true, 
+    "protocols" : {
+        "name" : "helloElectron",
+        "schemes" : ["helloelectron"]
+    },
+    "win": {  
+      "target": [  
+        "zip",  
+        "nsis"  
+      ],
+      "icon": "./resources/installer/Icon.ico"
+    },
+    "nsis":{
+      "oneClick" : false,
+      "allowToChangeInstallationDirectory" :true
+    },
+    "directories": {
+      "buildResources": "resources/installer/",
+      "output": "dist/", 
+      "app": "."
+    }
+  },
+  "name": "first",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:wind64" : "electron-builder --win --x64"
+  }
+}
