@@ -1,4 +1,4 @@
-public class Main {
+public class FibonacciNumbers {
     public static void main(String[] args) {
         
         int[] arr = new int[10];
