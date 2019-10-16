@@ -1,0 +1,26 @@
+html, body {
+    padding:5px;
+    h1 {
+        font-weight: bold;
+        font-size:30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    a {
+        color:blueviolet;
+    }
+    pre {
+        white-space: pre;
+    }
+    hr { 
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+

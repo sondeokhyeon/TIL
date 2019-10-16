@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Switch } from "react-router-dom";
 import  './scss/Header.scss'
 
 const Header = () => (
-    <>
-        <ul>
-            <il className="btn"><Link to="/">SetState</Link></il>
-            <il className="btn"><Link to="input">SetInput</Link></il>
-        </ul>
+    <Switch>  
+        <div className="header">
+                <span><Link to="/">SetState</Link></span>
+                <span><Link to="input">SetInput</Link></span>
+        </div>
         <hr/>
-    </>
+    </Switch>
 )
 
 export default Header

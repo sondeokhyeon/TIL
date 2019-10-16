@@ -1,3 +1,9 @@
-.btn {
-    padding: 10px;
+.header {
+    display:flex;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    span  {
+       padding: 10px 15px 15px 15px;
+    }
 }
+
