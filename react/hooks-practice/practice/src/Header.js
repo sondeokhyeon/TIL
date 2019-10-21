@@ -8,6 +8,7 @@ const Header = () => (
         <header className="header">
             <span><Link to="/">SetState</Link></span>
             <span><Link to="input">SetInput</Link></span>
+            <span><Link to="tabs">SetTabs</Link></span>
         </header>
         </>
     </Switch>

@@ -5,6 +5,7 @@ import './scss/Custom.scss';
 import Header from "./Header";
 import State from "./use/State";
 import Input from "./use/Input";
+import Tabs from "./use/Tabs";
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
             <Router>   
             <Header/>
                 <Route path="/input" component={Input}/>
+                <Route path="/tabs" component={Tabs}/>
                 <Route exact path="/" component={State}/>
             </Router>
         </>
