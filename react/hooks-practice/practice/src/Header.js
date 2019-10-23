@@ -10,7 +10,10 @@ const Header = () => {
             <span><Link to="/">SetState</Link></span>
             <span><Link to="input">SetInput</Link></span>
             <span><Link to="tabs">SetTabs</Link></span>
+            <span><h2> | </h2></span>
             <span><Link to="effect">Effect</Link></span>
+            <span><Link to="title">SetTitle</Link></span>
+            <span><Link to="click">useClick</Link></span>
         </header>
         </>
     </Switch>
