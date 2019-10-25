@@ -9,12 +9,14 @@ import Tabs from "./use/Tabs";
 import Effect from "./use/Effect";
 import Title from "./use/Title";
 import Click from "./use/Click";
+import Confirm from "./use/Confirm"
 
 const App = () => {
     return (
         <>
             <Router>   
             <Header/>
+                <Route path="/confirm"    component={Confirm}/>
                 <Route path="/click"    component={Click}/>
                 <Route path="/title"    component={Title}/>
                 <Route path="/effect"   component={Effect}/>

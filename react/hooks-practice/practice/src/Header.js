@@ -14,6 +14,7 @@ const Header = () => {
             <span><Link to="effect">Effect</Link></span>
             <span><Link to="title">SetTitle</Link></span>
             <span><Link to="click">useClick</Link></span>
+            <span><Link to="confirm">useConfirm</Link></span>
         </header>
         </>
     </Switch>
