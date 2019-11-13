@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=2.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        h1, p {
+            margin:0;
+        }
+
+        .container {
+            background-color: pink;
+        }
+
+        .item {
+            padding: 5%;
+        }
+
+        .item-a {
+            background-color: yellow;
+        }
+
+        .item-b {
+            background-color: yellowgreen;
+        }
+
+        @media screen and (min-width: 700px) {
+            .container {
+                font-size:0;
+            }
+            .item {
+                font-size:1rem;
+                vertical-align: top;
+                display:inline-block;
+
+            }
+            .item-a {
+                width: 40%;
+            }
+            .item-b {
+                width: 40%;
+            }
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <section class="item item-a">
+            <h1>Section a</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae placeat assumenda molestiae repudiandae quidem est itaque at quisquam. Provident pariatur ex illo repudiandae eveniet porro consequatur optio qui corporis vero!</p>
+        </section>
+        <section class="item item-b">
+            <h1>Section b</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident similique quos harum dolorum, atque sapiente corrupti, dicta cumque, totam quas sint ad consequatur unde eligendi repellat enim ratione et qui.</p>
+        </section>
+    </div>
+</body>
+</html>
