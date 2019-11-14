@@ -10,19 +10,21 @@ import Effect from "./use/Effect";
 import Title from "./use/Title";
 import Click from "./use/Click";
 import Confirm from "./use/Confirm"
+import Leave from "./use/Leave"
 
 const App = () => {
     return (
         <>
             <Router>   
             <Header/>
-                <Route path="/confirm"    component={Confirm}/>
-                <Route path="/click"    component={Click}/>
-                <Route path="/title"    component={Title}/>
-                <Route path="/effect"   component={Effect}/>
-                <Route path="/input"    component={Input}/>
-                <Route path="/tabs"     component={Tabs}/>
-                <Route exact path="/"   component={State}/>
+                <Route path="/leave"   component={Leave}/>
+                <Route path="/confirm" component={Confirm}/>
+                <Route path="/click"   component={Click}/>
+                <Route path="/title"   component={Title}/>
+                <Route path="/effect"  component={Effect}/>
+                <Route path="/input"   component={Input}/>
+                <Route path="/tabs"    component={Tabs}/>
+                <Route exact path="/"  component={State}/>
             </Router>
         </>
     )
