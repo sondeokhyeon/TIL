@@ -450,7 +450,6 @@
     white-space: nowrap;
     width: 65%;
     float: left;
-
 }
 
 .notice2 li span {
@@ -468,3 +467,194 @@
     height: 17px;
     background: url(../img/icon.png) no-repeat -150px -90px;
 }
+
+
+/* 게시판3 */
+
+.notice3 {
+    position: relative;
+}
+
+.notice3 h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.notice3 li {
+    position: relative;
+    padding: 8px 0 14px 60px;
+}
+
+.notice3 li a img {
+    width: 50px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border: 2px solid #c8c8c8;
+}
+
+.notice3 li a strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice3 li a span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.notice3 a.more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 17px;
+    height: 17px;
+    background: url(../img/icon.png) no-repeat -150px -90px;
+}
+
+/* 마우스 호버 */
+
+.notice_hover h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.notice_hover .hover1 {
+    overflow: hidden;
+}
+
+.notice_hover .hover1 li {
+    float: left;
+    width: 93px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.notice_hover .hover1 li:last-child {
+    margin-right: 0;
+}
+
+.notice_hover .hover1 a span {
+    position: relative;
+    display: block;
+    width: 93px;
+    height: 93px;
+    line-height: 93px;
+}
+
+.notice_hover .hover1 span img {
+    width: 100%;
+}
+
+.notice_hover .hover1 span em {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.notice_hover .hover1 span:hover em {
+    visibility: visible;
+}
+
+.notice_hover .hover1 a strong {
+    padding-top: 3px;
+    display: block;
+    font-size: 12px;
+}
+
+/* 마우스 호버2 */
+
+.notice_hover .hover2 {
+    position: relative;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.notice_hover .hover2 li {
+    float: left;
+    margin-right: 5px;
+}
+
+.notice_hover .hover2 li:last-child {
+    margin-right: 0px;
+}
+
+
+.notice_hover .hover2 a span {
+    display: block;
+    width: 93px;
+    height: 93px;
+    position: relative;
+}
+
+.notice_hover .hover2 a span img {
+    width: 100%;
+}
+
+.notice_hover .hover2 a span em {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    width: 100%;
+    visibility: hidden;
+}
+
+.notice_hover .hover2 a span:hover em {
+    visibility: visible;
+}
+
+.notice_hover .hover2 a strong {
+    padding-top: 3px;
+    display: block;
+    font-size: 12px;
+}
+
+/* 콘텐츠 요쇼 보이지 않게 하는 방법 
+
+    1. diplay:none - display:block (영역 사라짐)
+    2. visibilty:hiden - visibilty : visible (영역 유지)
+    3. opacity : 0; - opacity: 1 (영역 유자)
+    4. width: 0; height 0; overflow:hidden 
+
+*/
+
+.tab_menu {}
+
+.tab_menu ul {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab_menu ul li {
+    float: left;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+}
+
+.tab_menu ul li a {
+    display: block;
+    padding: 5px 10px;
+}
+
+.tab_menu ul li ul {}
+
+.tab_menu ul li ul li {}
+
+.tab_menu ul li ul li a {}
