@@ -80,6 +80,9 @@ h6 {
     font-weight: normal;
 }
 
+/* 테두리 효과  */
+img,fieldset {border :0 none;}
+
 /* IR 기법 */
 
 .ir_pm {
@@ -101,7 +104,7 @@ h6 {
     height: 100%;
 }
 
-/* 의미있는 이미지의 대체 텍스트로 이미지 없어도 텍시트를 보여주고자 할 때 */
+/* 의미있는 이미지의 대체 텍스트로 이미지 없어도 텍스트를 보여주고자 할 때 */
 
 .ir_su {
     overflow: hidden;

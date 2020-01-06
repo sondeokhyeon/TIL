@@ -635,7 +635,12 @@
 
 */
 
-.tab_menu {}
+.tab_menu {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 8px;
+    height: 105px;
+}
 
 .tab_menu ul {
     overflow: hidden;
@@ -653,8 +658,65 @@
     padding: 5px 10px;
 }
 
-.tab_menu ul li ul {}
+.tab_menu ul li ul { position: absolute; left: 0; top: 48px; width: 270px; border: 0;}
 
-.tab_menu ul li ul li {}
+.tab_menu ul li ul li { float : none; border: 0; background:url(../img/dot.gif) no-repeat 9px 8px; padding-left: 18px;}
 
-.tab_menu ul li ul li a {}
+.tab_menu ul li ul li a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; padding:0 0 3px 0}
+.tab_menu ul li.active {background: #2c94c4;}
+.tab_menu ul li.active a {color:white;}
+.tab_menu ul li.active ul li a {color:#333;}
+
+/* 게시판4 */
+
+.notice4 { border:  1px solid #ccc; margin-top: 10px; position: relative;}
+.notice4 h4 { font-size: 14px; color: #0093bd; padding-bottom: 3px; font-weight: bold; border-bottom: 1px solid #ccc;  padding : 5px 0px 5px 10px; }
+.notice4 ul { padding: 10px;} 
+.notice4 li {overflow: hidden; padding-left:10px; background:url(../img/dot.gif) no-repeat 0px 8px} 
+.notice4 li a {float: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 65%;} 
+.notice4 li span { float: right; text-align: right; width: 30%;}
+.notice4 > a {position: absolute; top: 9px; right: 9px;}
+
+/* 갤러리 */
+
+.gallery { border: 1px solid #ccc; height: 254px; position: relative; overflow: hidden;}
+.gallery h4 { font-size: 14px; color:#0093bd; border-bottom:1px solid #ccc; font-weight: bold; padding: 10px 0 8px 11px; }
+.gallery .gallery_btn {position: absolute; right: 5px; top: 7px;}
+.gallery .gallery_btn ul {overflow: hidden;}
+.gallery .gallery_btn li {float: left; margin:1px 2px;}
+.gallery .gallery_btn li a {display: block; width: 23px; height: 23px; background: url(../img/icon.png) no-repeat; }
+
+.gallery .gallery_btn li.gb_icon1 a{  background-position: -150px -120px;}
+.gallery .gallery_btn li.gb_icon2 a{ background-position: -150px -143px;}
+.gallery .gallery_btn li.gb_icon3 a{ background-position: -150px -166px;}
+.gallery .gallery_btn li.gb_icon4 a{ background-position: -150px -189px;}
+
+.gallery .gallery_btn li.gb_icon1 a:hover{  background-position: -173px -120px;}
+.gallery .gallery_btn li.gb_icon2 a:hover{ background-position:  -173px -143px;}
+.gallery .gallery_btn li.gb_icon3 a:hover{ background-position:  -173px -166px;}
+.gallery .gallery_btn li.gb_icon4 a:hover{ background-position:  -173px -189px;}
+
+.gallery .gallery_img img{ width:100%;}
+
+/* 로그인 */
+#login_form { background:#f2f4f5; padding:15px;}
+.login_header {overflow: hidden; font-size:12px; height: 30px;}
+.login_header .lh_check {float: left; padding-right: 15px;}
+.login_header .lh_check .input_check{ vertical-align: -2px;}
+.login_header .lh_ip {float:left; }
+.login_header .lh_ip em {color: #0093bd; text-decoration: underline;}
+.login_content {position: relative;}
+.login_content .lc_btn {position: absolute; right: 0; top: 0; width: 62px; height: 47px;  border: 1px solid #bebebe; background: #fff;}
+.login_content .input_text { width: 182px; height: 16px; padding : 2px 5px; border: 1px solid #bebebe; background: #fff; margin-bottom:3px; }
+
+.login_footer { margin-top: 5px}
+.login_footer li {display: inline; }
+.login_footer li  a {font-size:12px; }
+
+/* 팝업 */
+.popup {margin-top: 15px;}
+.popup h4 { font-size: 14px; color:#0093bd; padding-bottom: 4px; font-weight: 700;}
+.popup ul {overflow: hidden;}
+.popup li { float: left; width: 93px; margin-right: 5px;}
+.popup li.last {margin-right:0px;}
+.popup li img {width:100%;}
