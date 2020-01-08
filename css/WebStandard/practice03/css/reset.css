@@ -80,8 +80,11 @@ h6 {
     font-weight: normal;
 }
 
-/* 테두리 효과  */
+/* 테두리 초기화  */
 img,fieldset {border :0 none;}
+
+/* 버튼 초기화  */
+button {border : 0;}
 
 /* IR 기법 */
 

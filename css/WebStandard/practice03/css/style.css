@@ -39,6 +39,7 @@
 /* 컨텐츠 */
 #cont_nav {
     background-color: #f6fdff;
+    display:none;
 }
 
 #cont_tit {
@@ -211,8 +212,10 @@
     height: 60px;
     background: url(../img/icon.png) no-repeat 0 -600px;
 }
+.tit .btn.on {background-position: 0 -660px;}
 
-/* 배너 */
+/* 배너  */
+/*
 .ban {
     position: relative;
     padding: 24px 0 20px;
@@ -252,7 +255,7 @@
 .ban ul li:nth-child(2) {
     text-align: center;
 } */
-
+/*
 .ban ul li.ban_img1 {
     text-align: left;
 }
@@ -271,7 +274,24 @@
 
 .ban ul li img:hover {
     border-color: #98bcdc;
-}
+} */
+
+/* 슬랙 배너 */
+
+.ban {position: relative; padding: 24px 0 40px;}
+.ban .slick-prev {  position: absolute; top:80px; left: -60px; background: url(../img/icon.png) no-repeat -150px 0; width: 43px; height: 44px;  text-indent: -9999px;}
+.ban .slick-next {  position: absolute; top:80px; right: -60px; background: url(../img/icon.png) no-repeat -150px -43px; width: 43px; height: 44px; text-indent: -9999px;}
+.ban .slick-prev:hover {  background-position: -193px 0;}
+.ban .slick-next:hover {  background-position: -193px -43px;}
+.ban img { border: 4px solid #dcdcdc; }
+.ban img:hover { border-color:#98bcdc; }
+.ban .slick-slide {margin:10px;}
+.ban .slick-dots { position: absolute; bottom: 15px; display: block; text-align: center; width: 100%; }
+.ban .slick-dots li { display: inline-block; width: 15px;height: 15px; margin: 5px; }
+.ban .slick-dots li.slick-active button { background-color: #2b91c8;}
+.ban .slick-dots li button { font-size: 0; line-height: 0; display: block; width: 15px; height: 15px; cursor: pointer; background: #5bdfeb; border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; }
+
+
 
 /* 컨텐츠 */
 .cont {
