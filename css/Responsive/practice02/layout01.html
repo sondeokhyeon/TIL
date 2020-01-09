@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {padding: 0; margin: 0;}
+        body {background: #f3e5f5; color:white;
+        text-align: center; text-transform: uppercase; font-size: 30px;}
+        #wrap {width: 1200px; margin: 0 auto;}
+        header {width: 100%; height: 100px; background: #9575cd; line-height: 100px;}
+        aside {float:left; width:30%; height: 700px; background:  #7e57c2; line-height: 700px;}
+        section {float:left; width:70%; height: 700px; background: #673ab7; line-height: 700px;}
+        footer {width: 100%; height: 100px; background: #5e35b1; clear: both; line-height: 100px;}
+        
+        /* 화면 너비 0 ~ 1200px */
+        @media (max-width: 1220px) {
+            #wrap {width: 95%;}
+        }
+        /* 화면 너비 0 ~ 768px */
+        @media (max-width: 768px) {
+            #wrap {width: 100%;}
+        }
+        /* 화면 너비 0 ~ 480px */
+        @media (max-width: 480px) {
+            #wrap {width: 100%;}
+            header {height: 300px; line-height: 300px;}
+            aside{float: none; width: 100%; height: 300px; line-height: 300px;}
+            section{float:none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>header</header>
+        <aside>aside</aside>
+        <section>section</section>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>
