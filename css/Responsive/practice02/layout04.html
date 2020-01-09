@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        body {background: #fffde7;}
+        #wrap {width: 1200px; margin: 0 auto; }
+        header  {width: 100%; height: 100px; background: #ffe082; }
+        article {width: 100%; height: 300px;  background: #ffd54f; }
+        section {width: 90%; padding: 5%; background: #ffca28; overflow: hidden;}
+        section > div {width:18%; height: 170px; float: left; background: #ff9800; margin:1%; border-radius: 5px;}
+        footer {width: 100%; height: 100px;background: #ffb300; }
+        @media (max-width: 1220px ) {
+            #wrap {width: 100%;}
+            section > div {width: 23%; }
+            section > div:nth-child(5n) {display:none;}
+        }
+        @media (max-width: 768px ) {
+            section > div {width: 31.3333%; }
+            section > div:nth-child(5) {display:block;}
+        }
+        @media (max-width: 480px ) {
+            section > div {width: 48%; }
+            section > div:nth-child(5n) {display:block;}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header"></header> 
+        <article></article>
+        <section>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+        </section>
+        <footer class="footer"></footer>
+    </div>
+</body>
+</html>

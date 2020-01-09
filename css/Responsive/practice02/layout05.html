@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        #wrap {width: 1200px; margin: 0 auto;}
+        body {background-color: #e3f2fd;}
+        .header {width: 100%; height: 100px; background: #81d4fa;}
+        .nav {width: 100%; height: 200px; background: #64c8f6;}
+        .aside {float: left; width: 400px; height: 600px; background: #4fc3f7;}
+        .article1 {float: left; width: 800px; height: 300px; background: #29b6f6;}
+        .article2 {float: left; width: 800px; height: 300px; background: #03a9f4;}
+        .article3 {float: left; width: 400px; height: 300px; background: #025b85;}
+        .article4 {float: left; width: 400px; height: 300px; background: #045479;}
+        .article5 {float: left; width: 400px; height: 300px; background: #216b8d;}
+        .foot_side {background: #29b6f6; width:90%;  padding:5%; clear: both; overflow: hidden;}
+        .foot_side > div {margin: 3%; width:19%; height: 150px; background: #216b8d; float: left; border-radius: 10px;}
+        .footer { width: 100%; height: 100px; background: #0288d1;}
+
+        @media (max-width:1220px) {
+            #wrap {width:100%;}
+            .aside {width:40%;}
+            .article1 {width:60%}
+            .article2 {width:60%}
+            .article3 {width:50%}
+            .article4 {display: none;}
+            .article5 {width: 50%;}
+            .foot_side > div {width: 27%;}
+            .foot_side > div:nth-child(4) {display: none;}
+        }
+
+        @media (max-width:768px) {
+            .article3 {width: 100%;}
+            .article5 {width:100%;}
+            .foot_side > div {width: 27%;}
+        }
+
+        @media (max-width: 480px ) {
+            .aside {width:100%;}
+            .article1 {width:100%}
+            .article2 {width:100%}
+            .article3 {width:100%}
+            .foot_side > div {width: 94%;}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header"></header> 
+        <nav class="nav"></nav>
+        <aside class="aside"></aside>
+        <section class="article1"></section>
+        <section class="article2"></section>
+        <section class="article3"></section>
+        <section class="article4"></section>
+        <section class="article5"></section>
+        <aside class="foot_side"> 
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </aside>
+        <footer class="footer"></footer>
+    </div>
+</body>
+</html>
