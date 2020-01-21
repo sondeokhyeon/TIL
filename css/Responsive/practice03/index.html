@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/slick.css">
 
     <!-- Facebook meta tags -->
     <meta property="og:type" content="article" />
@@ -228,8 +229,28 @@
                 <section id="cont_center">
                     <h3 class='ir_su'>반응형 사이트 가운데 컨텐츠</h3>
                     <article class="column col4">
-                        <h4 class="col_tit">Title</h4>
-                        <p class="col_desc">이 곳은 설명 입니다.</p>
+                        <h4 class="col_tit">Slick Slider</h4>
+                        <p class="col_desc">slick.js를 이용한 이미지 슬라이드 효과입니다.</p>
+                        <div class="slider">
+                            <div>
+                                <figure>
+                                    <img src="img/slider001.jpg" alt="이미지1">
+                                    <figcaption><em>Responsive Site</em><span>슬라이드 플러그인을 이용한 반응형 이미지</span></figcaption>
+                                </figure>
+                            </div>
+                            <div>
+                                <figure>
+                                    <img src="img/slider001.jpg" alt="이미지2">
+                                    <figcaption><em>Responsive Site</em><span>슬라이드 플러그인을 이용한 반응형 이미지</span></figcaption>
+                                </figure>
+                            </div>
+                            <div>
+                                <figure>
+                                    <img src="img/slider001.jpg" alt="이미지3">
+                                    <figcaption><em>Responsive Site</em><span>슬라이드 플러그인을 이용한 반응형 이미지</span></figcaption>
+                                </figure>
+                            </div>
+                        </div>
                         <!-- 내용 -->
                     </article>
                     <!-- col4 -->
@@ -279,7 +300,26 @@
     <!-- footer -->
     <script src="./js/jquery.min_1.12.4.js"></script>
     <script src="./js/modernizr-custom.js"></script>
+    <script src="./js/slick.min.js"></script>
     <script>
+        //이미지슬라이더
+        $('.slider').slick({
+            dots:true,
+            autoplay:true,
+            autoPlaySpeed:3000,
+            arrows:true,
+            response: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows : true,
+                        dots: true
+                    }
+                }
+            ]
+        });
+
+        // sns 공유하기
         $(".facebook").click(function(e){
             e.preventDefault();
             window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, height=300, width=600'); 
