@@ -31,6 +31,9 @@ export default () => {
         <Li>
           <Link to="/api">api</Link>
         </Li>
+        <Li>
+          <Link to="/router">router</Link>
+        </Li>
       </Ul>
     </Nav>
   );
