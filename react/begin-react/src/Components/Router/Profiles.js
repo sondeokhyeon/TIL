@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
+import Profile from "./Profile";
+import UseRouterSample from "./UseRouterSample";
 
 const Profiles = () => {
   return (
@@ -7,10 +9,20 @@ const Profiles = () => {
       <h3>사용자 목록</h3>
       <ul>
         <li>
-          <Link to="/router/profile/sondeokhyeon">sondeokhyeon</Link>
+          <NavLink
+            to="/router/profile/sondeokhyeon"
+            activeStyle={{ background: "black", color: "white" }}
+          >
+            sondeokhyeon
+          </NavLink>
         </li>
         <li>
-          <Link to="/router/profile/honggildong">홍길동</Link>
+          <NavLink
+            to="/router/profile/honggildong"
+            activeStyle={{ background: "black", color: "white" }}
+          >
+            홍길동
+          </NavLink>
         </li>
       </ul>
 
@@ -19,6 +31,9 @@ const Profiles = () => {
         exact
         render={() => <div>선택하세요</div>}
       />
+
+      <Route path="/router/profile/:username" component={Profile} />
+      <UseRouterSample />
     </div>
   );
 };

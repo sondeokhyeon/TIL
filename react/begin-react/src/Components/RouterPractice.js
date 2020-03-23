@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Link, BrowserRouter } from "react-router-dom";
+import { Route, Link, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./Router/Home";
 import About from "./Router/About";
 import Profiles from "./Router/Profiles";
-import Profile from "./Router/Profile";
+import History from "./Router/History";
 
 const RouterPractice = () => {
   const baseUrl = "/router";
@@ -19,11 +19,16 @@ const RouterPractice = () => {
         <li>
           <Link to={`${baseUrl}/profile`}>profile</Link>
         </li>
+        <li>
+          <Link to={`${baseUrl}/history`}>history</Link>
+        </li>
       </ul>
-      <Route path={`${baseUrl}`} component={Home} exact />
-      <Route path={`${baseUrl}/about`} component={About} />
-      <Route path={`${baseUrl}/profile`} exact component={Profiles} />
-      <Route path="/router/profile/:username" component={Profile} />
+      <Switch>
+        <Route path={`${baseUrl}`} component={Home} exact />
+        <Route path={`${baseUrl}/about`} component={About} />
+        <Route path={`${baseUrl}/history`} component={History} />
+        <Route path={`${baseUrl}/profile`} component={Profiles} />
+      </Switch>
     </BrowserRouter>
   );
 };

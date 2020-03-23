@@ -1,5 +1,5 @@
 import React from "react";
-import Profiles from "./Profiles";
+import WithRouterSample from "./WithRouterSample";
 
 const profileData = {
   sondeokhyeon: {
@@ -22,11 +22,11 @@ const Profile = ({ match }) => {
 
   return (
     <div>
-      <Profiles />
       <h3>
         {username} ({profile.name})
       </h3>
       <p>{profile.description}</p>
+      <WithRouterSample />
     </div>
   );
 };
