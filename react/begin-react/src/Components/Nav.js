@@ -28,6 +28,12 @@ export default () => {
         <Li>
           <Link to="/style-component">style-component</Link>
         </Li>
+        <Li>
+          <Link to="/api">api</Link>
+        </Li>
+        <Li>
+          <Link to="/router">router</Link>
+        </Li>
       </Ul>
     </Nav>
   );

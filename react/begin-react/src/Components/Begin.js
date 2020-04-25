@@ -1,12 +1,12 @@
 import React from "react";
-import Hello from "./begin/Hello";
-import Counter from "./begin/Counter";
-import InputSample from "./begin/InputSample";
-import Todo from "./begin/Todo";
-import User from "./begin/User";
-import Todo2 from "./begin/Todo2";
-import ContextSample from "./begin/ContextSample";
-import { Wrapper } from "./begin/Wrapper";
+import Hello from "./Begin/Hello";
+import Counter from "./Begin/Counter";
+import InputSample from "./Begin/InputSample";
+import Todo from "./Begin/Todo";
+import User from "./Begin/User";
+import Todo2 from "./Begin/Todo2";
+import ContextSample from "./Begin/ContextSample";
+import { Wrapper } from "./Begin/Wrapper";
 
 export default () => {
   const hello = "hello";

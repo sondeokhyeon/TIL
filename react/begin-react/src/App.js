@@ -1,28 +1,34 @@
 import React from "react";
-import "./App.css";
-import { Wrapper } from "./Wrapper";
-import { Hello, Counter, InputSample, UserList } from "./Components";
-import Todo from "./Todo";
-const style = {
-  backgroundColor: "black",
-  color: "white"
-};
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Begin from "./components/Begin.js";
+import Nav from "./components/Nav";
+import SASS from "./components/SassStyle";
+import SC from "./components/StyleComponent";
+import API from "./components/API.js";
+import RouterPractice from "./components/RouterPractice";
 
 function App() {
-  const hello = "hello";
-  const world = "world!!";
-
   return (
-    <Wrapper>
-      {/* 주석주석 */}
-      <Hello name={hello} color="white" isSpecial />
-      <h1 style={style}>{world}</h1>
-      <Hello color="skyblue" />
-      <Counter />
-      <InputSample />
-      <UserList />
-      <Todo />
-    </Wrapper>
+    <>
+      <Router>
+        <Nav />
+        <Switch>
+          <Route path="/sass-style" component={SASS} />
+          <Route path="/style-component" component={SC} />
+          <Route path="/api" component={API} />
+          <Route path="/router" exact component={RouterPractice} />
+          <Route path="/" exact component={Begin} />
+          <Route
+            render={({ location }) => (
+              <div>
+                <h2>Page Not found</h2>
+                <p>{location.pathname}</p>
+              </div>
+            )}
+          />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
