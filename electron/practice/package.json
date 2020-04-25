@@ -1,0 +1,12 @@
+{
+  "name": "practice",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.2.3"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}
