@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style scoped>
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            border: 1px solid #dcdcdc;
+            height: 250px;
+            width: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .keyword>input[type="text"] {
+            height: 20px;
+        }
+
+        .keyword>button {
+            margin-left: 5px;
+            height: 26px;
+        }
+    </style>
+    <div class="box">
+        <div class="container">
+            <div class="keyword">
+                <input type="text" id="keyword">
+                <button id="search" type="submit">검색</button>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" name="t" class="ss"
+                        value="https://pixabay.com/ko/images/search/">pbay</label>
+                <label><input type="checkbox" name="t" class="ss"
+                        value="https://www.freepik.com/search?dates=any&format=search&page=1&query=$&selection=1&sort=popular&type=photo%2Cpsd">fpik</label>
+                <label><input type="checkbox" name="t" class="ss"
+                        value="https://www.flickr.com/search/?text=">fckr</label>
+                <!-- <label><input type="checkbox" name="t" class="ss" value="https://www.clipart.email/">cart</label> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = function () {
+        document.getElementById('search').onclick = function () {
+            var keyword = document.getElementById('keyword').value
+            if (keyword === '') {
+                alert('검색어 입력하슈')
+                return false;
+            }
+            Array.from(document.querySelectorAll('.ss')).map((item) => {
+                if (item.checked === true) {
+                    if (item.value.indexOf('$') !== -1) {
+                        item.value.replace('$', keyword);
+                        window.open(item.value.replace('$', keyword));
+                        return false;
+                    }
+                    window.open(item.value + keyword);
+                }
+            })
+        }
+    }
+</script>
+
+</html>
