@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <title>Practice</title>
+    <link rel="stylesheet" href="dist/style.css" />
+  </head>
+  <body>
+    <div class="conatiner mx-auto h-screen">
+      <div class="flex justify-center pt-4">
+        <span class="text-lg">현재시간 : </span>
+        <div id="timer" class="text-lg"></div>
+      </div>
+      <div class="flex m-8">
+        <div class="flex flex-col border-gray-400 flex-1 p-4">
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300"
+            placeholder="아이디"
+            type="text"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
+            placeholder="비밀번호"
+            type="password"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
+            placeholder="비밀번호"
+            type="password"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
+            placeholder="비밀번호"
+            type="password"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
+            placeholder="비밀번호"
+            type="password"
+          />
+          <button class="btn mt-4" id="newWindowBtn">등록</button>
+        </div>
+        <div class="flex-1 p-4">
+          등록된 일정이 없네요...
+        </div>
+      </div>
+      <div class="h-40 overflow-auto">
+        LOG
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
