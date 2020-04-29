@@ -12,6 +12,8 @@
     "build:css": "tailwind build style.css -o dist/style.css"
   },
   "dependencies": {
+    "moment": "^2.24.0",
+    "pickerjs": "^1.2.1",
     "puppeteer": "^3.0.1",
     "tailwindcss": "^1.3.5"
   }

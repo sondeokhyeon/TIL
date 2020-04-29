@@ -19,7 +19,14 @@ let win;
 // };
 
 async function createWindow() {
-  win = new BrowserWindow({ webPreferences: { nodeIntegration: true } });
+  win = new BrowserWindow({
+    // alwaysOnTop: true,
+    fullscreen: false,
+    resizable: false,
+    titie: "myapp",
+    webPreferences: { nodeIntegration: true },
+  });
+  win.removeMenu();
   // await pie.initialize(app);
   //const browser = await pie.connect(app, puppeteer);
 

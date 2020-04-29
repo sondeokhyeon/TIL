@@ -5,49 +5,63 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
     <title>Practice</title>
     <link rel="stylesheet" href="dist/style.css" />
+    <link rel="stylesheet" href="node_modules/pickerjs/dist/picker.css" />
   </head>
+
   <body>
     <div class="conatiner mx-auto h-screen">
-      <div class="flex justify-center pt-4">
-        <span class="text-lg">현재시간 : </span>
+      <div class="flex justify-center pt-4" id="top">
+        <span class="text-lg">현재시간 :&nbsp; &nbsp;</span>
         <div id="timer" class="text-lg"></div>
       </div>
-      <div class="flex m-8">
-        <div class="flex flex-col border-gray-400 flex-1 p-4">
+      <div class="flex mx-8 my-4 border border-gray-400">
+        <div class="flex flex-col border-r border-gray-400 flex-1 p-4 border-g">
           <input
             class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300"
+            placeholder="URL"
+            type="text"
+            id="url"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
+            placeholder="시간"
+            type="text"
+            id="picker"
+          />
+          <input
+            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
             placeholder="아이디"
             type="text"
+            id="id"
           />
           <input
             class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
             placeholder="비밀번호"
             type="password"
+            id="pw"
           />
           <input
             class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
-            placeholder="비밀번호"
-            type="password"
+            placeholder="창갯수"
+            type="number"
+            id="wno"
+            max="10"
           />
-          <input
-            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
-            placeholder="비밀번호"
-            type="password"
-          />
-          <input
-            class="bg-white foucs:outline-none foucs:shadow-outline border border-gray-300 mt-4"
-            placeholder="비밀번호"
-            type="password"
-          />
-          <button class="btn mt-4" id="newWindowBtn">등록</button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold mt-4"
+            id="newWindowBtn"
+          >
+            등록
+          </button>
         </div>
-        <div class="flex-1 p-4">
-          등록된 일정이 없네요...
+        <div class="flex-1 p-4 overflow-auto h-64" id="job-container">
+          등록된 일정이 없습니다.
         </div>
       </div>
-      <div class="h-40 overflow-auto">
-        LOG
-      </div>
+      <div
+        class="h-48 overflow-auto mx-8 border border-gray-400"
+        id="log-container"
+      ></div>
     </div>
     <script src="main.js"></script>
   </body>
