@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 100px);
+            /*grid-template-columns: 150px 150px 150px;
+            grid-template-rows: 150px 120px 150px;*/
+            /* column-gap: 10px;
+            row-gap: 10px; */
+            gap: 10px;
+
+        }
+
+        .child {
+            border: 1px solid #cdcdcd;
+            background-color: cadetblue;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+
+</html>
