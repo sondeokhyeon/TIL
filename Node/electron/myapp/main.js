@@ -1,6 +1,5 @@
 //const BrowserWindow = require("electron").remote.BrowserWindow;
-//const puppeteer = require("puppeteer");
-
+const puppeteer = require("puppeteer");
 const moment = require("moment");
 const Picker = require("pickerjs");
 
@@ -21,31 +20,54 @@ window.onload = function () {
 };
 
 function init() {
+  clockInit();
   timerInit();
   logSetter("사용준비가 되었습니다.");
-  logSetter("일정 등록 해주세요.");
+  logSetter("일정을 등록 해주세요.");
   jobAdder();
   helper();
   pickerInit();
 }
 
-function timerInit() {
+function clockInit() {
   timerContainer.innerText = now();
   setInterval(() => {
-    const time = now();
-    timerContainer.innerText = time;
-    if (jobManager[0] === time) {
-      jobManager.shift();
-      logSetter("일정이 실행됩니다.");
-      logSetter("일정이 종료되었습니다.");
-      console.log(jobManager);
-    }
+    timerContainer.innerText = now();
   }, 1 * 1000);
+}
+
+function timerInit() {
+  setInterval(() => {
+    if (
+      jobManager[0] &&
+      jobManager[0].time === moment(new Date()).format("HH:mm")
+    ) {
+      jobStater(jobManager[0]);
+      jobContainer.children[0].remove();
+      jobManager.shift();
+
+      //logSetter("일정이 종료되었습니다.");
+    }
+  }, 1 * 1000 * 10);
+}
+
+async function jobStater(info) {
+  logSetter("일정이 실행됩니다.");
+  const browser = await puppeteer.launch({
+    ignoreDefaultArgs: ["--disable-extensions"],
+    headless: false,
+    timeout: 5000,
+    defaultViewport: null,
+  });
+  const page = await browser.newPage();
+  await page.goto(info.url);
+  logSetter("일정이 종료되었습니다.");
 }
 
 function jobAdder() {
   newWindowbtn.onclick = function () {
     const info = getInfo();
+    if (info === false) return false;
     const job_innerContainer = document.createElement("div");
     const jobs = document.createElement("div");
     const button = document.createElement("button");
@@ -62,7 +84,7 @@ function jobAdder() {
       }
     });
     job_innerContainer.appendChild(jobs);
-    jobManager.push(jobs);
+    jobManager.push(info);
 
     if (jobContainer.childElementCount === 0) jobContainer.innerHTML = "";
     jobContainer.appendChild(job_innerContainer);
@@ -78,15 +100,6 @@ function jobDeleter(id) {
     jobContainer.innerText = "등록된 일정이 없습니다.";
 }
 
-// const browser = await puppeteer.launch({
-//   ignoreDefaultArgs: ["--disable-extensions"],
-//   headless: false,
-//   timeout: 5000,
-//   defaultViewport: null,
-// });
-// const page = await browser.newPage();
-// await page.goto("https://www.naver.com");
-
 function pickerInit() {
   new Picker(picker, {
     format: "HH:mm",
@@ -101,6 +114,22 @@ function pickerInit() {
 }
 
 function getInfo() {
+  if (simpleVaildator(url) === false) {
+    alert("URL이 비어있습니다.");
+    return false;
+  }
+  if (simpleVaildator(picker) === false) {
+    alert("시간을 비어있습니다.");
+    return false;
+  }
+  if (simpleVaildator(id) === false) {
+    alert("아이디가 없습니다.");
+    return false;
+  }
+  if (simpleVaildator(pw) === false) {
+    alert("비밀번호가 없습니다.");
+    return false;
+  }
   return {
     url: url.value,
     id: id.value,
@@ -108,6 +137,13 @@ function getInfo() {
     pw: pw.value,
     wno: wno.value,
   };
+}
+
+function simpleVaildator(data) {
+  if (data.value !== "") {
+    return data.value;
+  }
+  return false;
 }
 
 function logSetter(cont = " ") {
