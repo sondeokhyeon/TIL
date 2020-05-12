@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid {
+            display: grid;
+            color: white;
+            background: #000;
+            gap: 5px;
+            height: 100vh;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            /*
+            justify-content: space-between;
+            align-content: space-between;
+            align-items : center;
+            justify-items : center;
+            */
+
+            place-content: space-between space-between;
+            place-items: center center;
+
+        }
+
+        .header {
+            background-color: #2ac565;
+        }
+
+        .content {
+            background-color: #2d8bd6;
+        }
+
+        .nav {
+            background-color: #843ca4;
+        }
+
+        .footer {
+            background-color: #f29213;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="header">header</div>
+        <div class="content">content</div>
+        <div class="nav">nav</div>
+        <div class="footer">footer</div>
+        <div class="header">header</div>
+        <div class="content">content</div>
+        <div class="nav">nav</div>
+        <div class="footer">footer</div>
+        <div class="header">header</div>
+        <div class="content">content</div>
+        <div class="nav">nav</div>
+        <div class="footer">footer</div>
+    </div>
+</body>
+
+</html>
