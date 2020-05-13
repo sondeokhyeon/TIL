@@ -1,22 +1,11 @@
 console.log("running...");
 
 const { app, BrowserWindow } = require("electron");
-require("electron-reload")(__dirname);
+require("electron-reload")(__dirname, {
+  electron: require(`${__dirname}/node_modules/electron`),
+});
 
 let win;
-
-// const main = async () => {
-//   await pie.initialize(app);
-//   const browser = await pie.connect(app, puppeteer);
-
-//   const window = new BrowserWindow();
-//   const url = "https://example.com/";
-//   await window.loadURL(url);
-
-//   const page = await pie.getPage(browser, window);
-//   console.log(page.url());
-//   window.destroy();
-// };
 
 async function createWindow() {
   win = new BrowserWindow({
@@ -26,17 +15,7 @@ async function createWindow() {
     titie: "myapp",
     webPreferences: { nodeIntegration: true },
   });
-  win.removeMenu();
-  // await pie.initialize(app);
-  //const browser = await pie.connect(app, puppeteer);
-
-  // const win = new BrowserWindow();
-  // const url = "https://www.naver.com";
-  // await win.loadURL(url);
-
-  //const page = await pie.getPage(browser, win);
-  //console.log(page.url());
-  //win.destroy();
+  win.removeMenu(null);
 
   win.loadFile("main.html");
   win.webContents.openDevTools();
