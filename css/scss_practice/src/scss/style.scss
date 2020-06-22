@@ -1,0 +1,19 @@
+@import '_variables.scss';
+@import '_mixin.scss';
+
+body {
+    background: #858585;
+
+    h1 {
+        font-size: $title;
+        color: white;
+
+        &:hover {
+            color: gold;
+        }
+    }
+
+    h2 {
+        @include title('gold');
+    }
+}

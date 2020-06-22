@@ -1,0 +1,8 @@
+@mixin title($color) {
+    @if $color=='gold' {
+        color: gold;
+    }
+
+    font-size: 30px;
+    margin-bottom: 12px;
+}
