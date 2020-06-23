@@ -1,5 +1,6 @@
 @import '_variables.scss';
 @import '_mixin.scss';
+@import '_button.scss';
 
 body {
     background: #858585;
@@ -15,5 +16,43 @@ body {
 
     h2 {
         @include title('gold');
+    }
+
+    div {
+        a {
+            @extend %button;
+            text-decoration: none;
+        }
+
+        button {
+            @extend %button;
+            border: none;
+        }
+    }
+
+    .response {
+        color: goldenrod;
+        margin: 0;
+
+        @include responsive("iphone") {
+            color: yellow;
+            font-size: 30px;
+        }
+
+        @include responsive('iphone-l') {
+            font-size: 60px;
+        }
+
+        @include responsive('tablet') {
+            color: green;
+            font-size: 120px;
+        }
+
+        @include responsive('tablet-l') {
+            color: yellow;
+            font-size: 150px;
+
+        }
+
     }
 }

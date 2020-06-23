@@ -1,3 +1,8 @@
+$p500 : 500px;
+$p700 : $p500+200;
+$p900 : $p700+200;
+
+
 @mixin title($color) {
     @if $color=='gold' {
         color: gold;
@@ -5,4 +10,30 @@
 
     font-size: 30px;
     margin-bottom: 12px;
+}
+
+@mixin responsive($device) {
+    @if $device=='iphone' {
+        @media screen and (max-width: $p500) {
+            @content; // 500이하
+        }
+    }
+
+    @else if $device=='iphone-l' {
+        @media screen and (min-width: $p500) and (max-width : $p700) {
+            @content; // 500 이상이고 700이하
+        }
+    }
+
+    @else if $device=='tablet' {
+        @media screen and (min-width: $p700) and (max-width : $p900) {
+            @content; // 700이상이고 900이하 
+        }
+    }
+
+    @else if $device=='tablet-l' {
+        @media screen and (min-width: $p900) {
+            @content; // 900이상
+        }
+    }
 }

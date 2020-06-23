@@ -1,2 +1,44 @@
-body{background:#858585}body h1{font-size:32px;color:white}body h1:hover{color:gold}body h2{color:gold;font-size:30px;margin-bottom:12px}
+body div a, body div button {
+  font-family: inherit;
+  border-radius: 7px;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  color: white;
+  background-color: red;
+  font-weight: 500; }
+
+body {
+  background: #858585; }
+  body h1 {
+    font-size: 32px;
+    color: white; }
+    body h1:hover {
+      color: gold; }
+  body h2 {
+    color: gold;
+    font-size: 30px;
+    margin-bottom: 12px; }
+  body div a {
+    text-decoration: none; }
+  body div button {
+    border: none; }
+  body .response {
+    color: goldenrod;
+    margin: 0; }
+    @media screen and (max-width: 500px) {
+      body .response {
+        color: yellow;
+        font-size: 30px; } }
+    @media screen and (min-width: 500px) and (max-width: 700px) {
+      body .response {
+        font-size: 60px; } }
+    @media screen and (min-width: 700px) and (max-width: 900px) {
+      body .response {
+        color: green;
+        font-size: 120px; } }
+    @media screen and (min-width: 900px) {
+      body .response {
+        color: yellow;
+        font-size: 150px; } }
 
