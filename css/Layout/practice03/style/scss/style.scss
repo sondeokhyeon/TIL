@@ -1,5 +1,6 @@
 @import 'variable.scss';
 @import 'reset.scss';
+@import 'mixin.scss';
 
 * {
     box-sizing: border-box;
@@ -15,19 +16,46 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: $fixedwidth;
     height: 100%;
-    padding: 10vh 0 72px 72px;
+    padding: 8vh 0 72px 72px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: $red;
+
+    @include response_layout('sm') {
+        position: inherit;
+        height: 700px;
+        margin-bottom: 20px;
+        padding: 10vh 0 72px 30px;
+    }
+
+    @include response_layout('me') {
+        width: 50%;
+    }
+
+    @include response_layout('lg') {
+        width: $fixedwidth;
+    }
 
     h1 {
         font-size: 5.5rem;
         width: 50%;
         text-transform: uppercase;
         letter-spacing: 5px;
+        font-weight: 500;
+
+        @include response_layout('sm') {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            letter-spacing: 10px;
+        }
+
+        @include response_layout('me') {
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
     }
 
     h3 {
@@ -39,6 +67,10 @@ header {
     p {
         width: 70%;
         line-height: 1.2;
+
+        @include response_layout('sm') {
+            width: 90%;
+        }
     }
 
     p {
@@ -76,7 +108,13 @@ header {
 
 section {
 
-    margin-left: $fixedwidth;
+    @include response_layout('me') {
+        margin-left: 50%;
+    }
+
+    @include response_layout('lg') {
+        margin-left: $fixedwidth;
+    }
 
     .movie {
         background:
@@ -84,7 +122,13 @@ section {
                 rgba(0, 0, 0, .08) 1%,
                 transparent),
             $red;
+
         height: 100vh;
+
+        @include response_layout('sm') {
+            height: 400px;
+        }
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -102,9 +146,18 @@ section {
                 align-items: flex-end;
                 margin-bottom: 25px;
 
+                @include response_layout('sm') {
+                    flex-direction: column;
+                    align-items: flex-start
+                }
+
                 h4 {
                     font-size: 32px;
                     text-transform: uppercase;
+
+                    @include response_layout('sm') {
+                        font-size: 1.3rem;
+                    }
                 }
 
                 h5 {

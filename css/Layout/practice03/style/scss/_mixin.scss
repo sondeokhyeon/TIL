@@ -1,0 +1,23 @@
+$p1400 : 1400px;
+$p700 : 700px;
+
+@mixin response_layout($size) {
+    @if $size=='sm' {
+        @media screen and (max-width:$p700) {
+            @content;
+        }
+    }
+
+    @else if $size=='me' {
+        @media screen and (min-width:$p700) and (max-width:$p1400) {
+            @content;
+        }
+    }
+
+    @else if $size=='lg' {
+        @media screen and (min-width:$p1400) {
+            @content;
+        }
+    }
+
+}
