@@ -1,0 +1,134 @@
+header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $blue;
+
+    .top {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 81px;
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .logo {
+                padding-top: 20px;
+
+                h1 {
+                    font-size: 50px;
+                }
+            }
+
+            .search {
+                position: relative;
+                padding-left: 50px;
+
+                .recommend {
+                    font-size: 11px;
+                    width: 225px;
+                    margin: 0 auto;
+                    margin-bottom: 10px;
+                    margin-top: 4px;
+                }
+
+                .search--bar {
+                    position: relative;
+
+                    ._input {
+                        border-radius: 20px;
+                        width: 440px;
+                        height: 45px;
+                        border: 2px solid $blue;
+                        padding: 1px 0px 1px 10px;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+
+                    ._btn {
+                        position: absolute;
+                        right: 15px;
+                        top: 15px;
+                    }
+                }
+
+            }
+
+            .service {
+                padding-top: 20px;
+                padding-right: 50px;
+
+                ul {
+                    li {
+                        display: inline-block;
+
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            width: 80px;
+                            height: 50px;
+                            padding-top: 5px;
+
+                            i {
+                                text-align: center;
+                                margin-bottom: 8px;
+                                color: $gray;
+                            }
+
+                            span {
+                                font-size: 10px;
+                                text-align: center;
+                                color: $gray;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .bottom {
+        margin-bottom: 10px;
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+
+            .category {
+                padding-right: 50px;
+
+                ul {
+                    li {
+                        display: inline-block;
+                        font-size: 15px;
+                        font-weight: 800;
+
+                        &+li {
+                            padding-left: 30px;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: #000;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+    }
+
+}

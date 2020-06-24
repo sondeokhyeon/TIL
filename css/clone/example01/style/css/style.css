@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box; }
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+body {
+  height: 200vh; }
+
+.container {
+  width: 1100px;
+  margin: 0 auto; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #0975e1; }
+  header .top {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 81px; }
+    header .top .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      header .top .container .logo {
+        padding-top: 20px; }
+        header .top .container .logo h1 {
+          font-size: 50px; }
+      header .top .container .search {
+        position: relative;
+        padding-left: 50px; }
+        header .top .container .search .recommend {
+          font-size: 11px;
+          width: 225px;
+          margin: 0 auto;
+          margin-bottom: 10px;
+          margin-top: 4px; }
+        header .top .container .search .search--bar {
+          position: relative; }
+          header .top .container .search .search--bar ._input {
+            border-radius: 20px;
+            width: 440px;
+            height: 45px;
+            border: 2px solid #0975e1;
+            padding: 1px 0px 1px 10px; }
+            header .top .container .search .search--bar ._input:focus {
+              outline: none; }
+          header .top .container .search .search--bar ._btn {
+            position: absolute;
+            right: 15px;
+            top: 15px; }
+      header .top .container .service {
+        padding-top: 20px;
+        padding-right: 50px; }
+        header .top .container .service ul li {
+          display: inline-block; }
+          header .top .container .service ul li div {
+            display: flex;
+            flex-direction: column;
+            width: 80px;
+            height: 50px;
+            padding-top: 5px; }
+            header .top .container .service ul li div i {
+              text-align: center;
+              margin-bottom: 8px;
+              color: #8a8684; }
+            header .top .container .service ul li div span {
+              font-size: 10px;
+              text-align: center;
+              color: #8a8684; }
+  header .bottom {
+    margin-bottom: 10px; }
+    header .bottom .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+      header .bottom .container .category {
+        padding-right: 50px; }
+        header .bottom .container .category ul li {
+          display: inline-block;
+          font-size: 15px;
+          font-weight: 800; }
+          header .bottom .container .category ul li + li {
+            padding-left: 30px; }
+          header .bottom .container .category ul li a {
+            text-decoration: none;
+            color: #000; }
+            header .bottom .container .category ul li a:hover {
+              text-decoration: underline; }
+
+section .banner {
+  margin-bottom: 15px; }
+
+section .main--contents {
+  display: flex; }
+  section .main--contents div {
+    width: 200px;
+    height: 665px; }
+
