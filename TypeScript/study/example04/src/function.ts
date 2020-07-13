@@ -35,4 +35,5 @@ function store(type: "통조림" | "아이스크림")   {
     }
 }
 
-const s  = store('아이스크림');
+const s  = store('통조림');
+console.log(s.a)
