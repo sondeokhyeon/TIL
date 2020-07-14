@@ -12,6 +12,7 @@
       "target": "es6",
       "sourceMap": true,
       "removeComments": true,
+      "watch": true
     },
     "compileOnSave": true,
 }
