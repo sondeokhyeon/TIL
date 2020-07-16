@@ -10,10 +10,7 @@ export class Cell {
     private isActive = false;
     readonly _el: HTMLElement = document.createElement('div');
 
-    constructor(
-        public readonly position: Position,
-        private piece: Piece
-    ) {
+    constructor(public readonly position: Position, private piece: Piece ) {
         this._el.classList.add('cell');
     }
     put(piece: Piece) {
@@ -45,6 +42,7 @@ export class Cell {
 export class Board {
     cells : Cell[] = [];
     _el : HTMLElement = document.createElement('div');
+    map : WeakMap<HTMLElement, Cell>= new WeakMap();
 
     constructor(upperPlayer : Player, lowerPlater: Player) {
         this._el.className = 'board'
@@ -56,13 +54,12 @@ export class Board {
 
             for (let col = 0; col < 3; col++) {
                 const piece = 
-                upperPlayer.getPieces().find(({currentPosition}) => 
-                     currentPosition.col === col && currentPosition.row === row
-                ) || 
-                lowerPlater.getPieces().find(({currentPosition}) => 
-                     currentPosition.col === col && currentPosition.row === row
-                )
+                    upperPlayer.getPieces().find(({currentPosition}) => 
+                        currentPosition.col === col && currentPosition.row === row) || 
+                    lowerPlater.getPieces().find(({currentPosition}) => 
+                        currentPosition.col === col && currentPosition.row === row)
                 const cell = new Cell({col, row}, piece)
+                this.map.set(cell._el, cell);
                 this.cells.push(cell);
                 rowEl.appendChild(cell._el);
             }
