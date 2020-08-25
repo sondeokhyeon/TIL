@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 900px;
+            margin: 0 auto;
+        }
+        .article {
+            margin: 5px 50px;
+            height: 80vh;
+            background-color: skyblue;
+            border: 1px solid #c3c3c3;
+            font-size:20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease-out;
+        }
+        .container:last-child() {
+            margin: 0;
+        }
+        .container > .active {
+            background-color: goldenrod;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="article">
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, amet praesentium ducimus voluptatum veritatis architecto veniam at itaque, voluptas fugiat exercitationem quod dolor reiciendis deserunt numquam earum autem, tempora nostrum.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi sed a neque alias inventore debitis possimus consequuntur! Doloremque velit, animi ducimus dolor, culpa unde deleniti quisquam esse consequatur, quae fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente excepturi necessitatibus velit quaerat aliquid unde. Quam consequatur voluptas minus tenetur nostrum, veritatis voluptatem vitae quae doloremque ipsum earum expedita similique. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat quos voluptates id numquam nam ullam, dignissimos labore qui quibusdam, totam doloremque voluptatem hic repellendus veritatis dolorem. Eveniet perspiciatis aliquid minima. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt totam quidem nihil consequatur inventore esse sed facere doloremque officia vel? Tempora fuga inventore necessitatibus explicabo consectetur soluta, recusandae iusto. Nesciunt?</div>
+        </div>
+        <div class="article">
+            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad laborum unde, fugit tenetur laboriosam aliquam reprehenderit sequi nulla, repellat quaerat accusamus, neque ullam! Harum delectus dolore expedita. Maxime, itaque sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ex dolore modi repellat. Magni nobis incidunt aliquid ullam ad, accusantium fugit quaerat adipisci, nemo, culpa ab inventore libero obcaecati maxime. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat recusandae nam, fugit tempora sunt est iusto autem quod ut molestias ducimus maiores praesentium omnis mollitia ad a deserunt sed quasi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe iusto distinctio reiciendis labore minus, dignissimos voluptatibus dolores veniam, earum, in pariatur. Quidem accusantium architecto ab, obcaecati sapiente officia voluptate deleniti.</div>
+        </div>
+        <div class="article">
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa alias quasi dolor maiores veritatis esse incidunt ipsum itaque vero aliquid ducimus asperiores, sed maxime eius, nam libero eligendi ad reprehenderit? Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eum dolorum eaque laboriosam ipsum possimus quod hic corporis delectus neque. Nesciunt quibusdam illum animi? Natus quidem explicabo commodi ipsam eligendi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus illum a harum error autem quidem quos temporibus ratione pariatur omnis. Ipsa, laudantium quos! Repudiandae obcaecati atque vero, a id modi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus minus deserunt quas asperiores, sunt molestiae laboriosam est provident in aliquam eius fuga tempore. Voluptatem vero, consectetur beatae dolores nemo eum?</div>
+        </div>
+    </div>
+    <div id="end"></div>
+
+    <script>
+        function ob() {
+            const options = {
+                root: null,
+                rootMargin: "-350px 0px",
+                threshold: 0.25
+            }
+            const section = document.querySelectorAll('.container > div');
+            const sectionOb = new IntersectionObserver(beTouching, options);
+            section.forEach(sub => {
+                sectionOb.observe(sub);
+            })
+            function beTouching(entries, ob) {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting ) {
+                        //console.log(entry.target);
+                        entry.target.classList.add('active')
+                        //ob.unobserve(entry.target) // 감시 종료
+                    } else {
+                        entry.target.classList.remove('active')
+                    }
+                })
+            }
+        }
+
+        let index = 1;
+        function infiniteElem() {
+            const container = document.querySelector('.container');
+            for(i = index; i < index + 10; i++) {
+                const inner = document.createElement('div')
+                inner.classList.add('article')
+                inner.textContent = i;
+                container.appendChild(inner);
+            }
+            index += 10;
+        }
+       
+        const option = {}
+
+        const opserver = new IntersectionObserver(function(entrys, opserver) {
+            entrys.forEach(entry => {
+                if(entry.isIntersecting) {
+                    infiniteElem();
+                    ob();
+                }
+            })
+        }, option);
+
+        opserver.observe(document.getElementById('end'))
+        ob()
+    </script>
+
+</body>
+</html>
