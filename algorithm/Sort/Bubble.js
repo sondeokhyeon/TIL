@@ -17,7 +17,7 @@ function bubble (type) {
         if(type === 'w') {
             let div =  document.createElement('div');
             div.innerText = print(array);
-            document.getElementById('b_container').appendChild(div)
+            document.getElementById('b_sort').appendChild(div)
         } else {
             console.log(print(array))
         }
