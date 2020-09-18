@@ -1,5 +1,5 @@
 import React from "react";
-import { authService } from "../myBase";
+import { authService } from "../mybase";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {

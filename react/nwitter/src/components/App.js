@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import Router from "./Router";
-import { authService } from "../myBase";
+import Router from "./router";
+import { authService } from "../mybase";
 
 function App() {
-  const [init, setInit] = useState(false);
+  const [init, setinit] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [useObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedin(true);
+        setUserObj(user);
       } else {
         setIsLoggedin(false);
       }
-      setInit(true);
+      setinit(true);
     });
   }, []);
   return (
     <>
-      {init ? <Router isLoggedin={isLoggedin} /> : "Initalizing..."}
+      {init ? (
+        <Router isLoggedin={isLoggedin} useObj={useObj} />
+      ) : (
+        "Initalizing..."
+      )}
       <footer>&copy; Nwitter {new Date().getFullYear()}</footer>
     </>
   );

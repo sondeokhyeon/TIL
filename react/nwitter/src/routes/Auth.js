@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authService, fireInstance } from "../myBase";
+import { authService, fireInstance } from "../mybase";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
