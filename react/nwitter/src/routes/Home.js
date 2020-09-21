@@ -5,16 +5,18 @@ import Nweet from "../components/Nweet";
 const Home = ({ useObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const getNweets = async () => {
-    const dbnweets = await dbService.collection("nweets").get();
-    dbnweets.forEach((doc) => {
-      const nweetObject = {
-        ...doc.data(),
-        id: doc.id,
-      };
-      setNweets((prev) => [nweetObject, ...prev]);
-    });
-  };
+  const [attch, setAttch] = useState();
+
+  // const getNweets = async () => {
+  //   const dbnweets = await dbService.collection("nweets").get();
+  //   dbnweets.forEach((doc) => {
+  //     const nweetObject = {
+  //       ...doc.data(),
+  //       id: doc.id,
+  //     };
+  //     setNweets((prev) => [nweetObject, ...prev]);
+  //   });
+  // };
 
   useEffect(() => {
     // getNweets();
@@ -45,6 +47,25 @@ const Home = ({ useObj }) => {
     setNweet(value);
   };
 
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0];
+    const reader = new FileReader();
+    reader.onloadend = (finishiedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishiedEvent;
+      setAttch(result);
+    };
+    reader.readAsDataURL(theFile);
+  };
+
+  const onClearPhoto = () => {
+    setAttch(null);
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -55,11 +76,22 @@ const Home = ({ useObj }) => {
           maxLength={120}
           value={nweet}
         />
+        <input type="file" accept="image/*" onChange={onFileChange} />
         <input type="submit" value="Nweet" />
+        {attch && (
+          <div>
+            <img src={attch} width="50px" height="50px;" />
+            <button onClick={onClearPhoto}>clear photo</button>
+          </div>
+        )}
       </form>
       <div>
         {nweets.map((nweet) => (
-          <Nweet key={nweet.id} nweetObj={nweet} />
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.creatorId === useObj.uid}
+          />
         ))}
       </div>
     </div>
