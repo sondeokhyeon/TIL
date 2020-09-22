@@ -10,18 +10,18 @@ import Home from "../routes/Home";
 import Navigation from "./navigation";
 import Profile from "../routes/Profile";
 
-export default ({ isLoggedin, useObj }) => {
+export default ({ isLoggedin, userObj, refreshUser }) => {
   return (
     <Router>
-      {isLoggedin && <Navigation />}
+      {isLoggedin && <Navigation userObj={userObj} />}
       <Switch>
         {isLoggedin ? (
           <>
             <Route exact path="/">
-              <Home useObj={useObj} />
+              <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile />
+              <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
             <Redirect from="*" to="/" />
           </>

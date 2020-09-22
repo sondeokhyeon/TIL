@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { dbService } from "../mybase";
+import { v4 as uuidv4 } from "uuid";
+import { dbService, storageService } from "../mybase";
 import Nweet from "../components/Nweet";
 
-const Home = ({ useObj }) => {
+const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const [attch, setAttch] = useState();
-
-  // const getNweets = async () => {
-  //   const dbnweets = await dbService.collection("nweets").get();
-  //   dbnweets.forEach((doc) => {
-  //     const nweetObject = {
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     };
-  //     setNweets((prev) => [nweetObject, ...prev]);
-  //   });
-  // };
+  const [attch, setAttch] = useState("");
 
   useEffect(() => {
     // getNweets();
@@ -25,19 +15,29 @@ const Home = ({ useObj }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log(nweetArray);
       setNweets(nweetArray);
     });
   }, []);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("nweets").add({
+    let attachUrl = "";
+    if (attch !== "") {
+      const attachref = storageService
+        .ref()
+        .child(`${userObj.uid}/${uuidv4()}`);
+      const response = await attachref.putString(attch, "data_url");
+      attachUrl = await response.ref.getDownloadURL();
+    }
+    const nweetObj = {
       text: nweet,
       createdAt: Date.now(),
-      creatorId: useObj.uid,
-    });
+      creatorId: userObj.uid,
+      attachUrl,
+    };
+    await dbService.collection("nweets").add(nweetObj);
     setNweet("");
+    setAttch("");
   };
 
   const onChange = (event) => {
@@ -53,6 +53,7 @@ const Home = ({ useObj }) => {
     } = event;
     const theFile = files[0];
     const reader = new FileReader();
+
     reader.onloadend = (finishiedEvent) => {
       const {
         currentTarget: { result },
@@ -65,7 +66,6 @@ const Home = ({ useObj }) => {
   const onClearPhoto = () => {
     setAttch(null);
   };
-
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -90,7 +90,7 @@ const Home = ({ useObj }) => {
           <Nweet
             key={nweet.id}
             nweetObj={nweet}
-            isOwner={nweet.creatorId === useObj.uid}
+            isOwner={nweet.creatorId === userObj.uid}
           />
         ))}
       </div>

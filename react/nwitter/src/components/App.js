@@ -5,7 +5,7 @@ import { authService } from "../mybase";
 function App() {
   const [init, setinit] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
-  const [useObj, setUserObj] = useState(null);
+  const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -17,10 +17,17 @@ function App() {
       setinit(true);
     });
   }, []);
+  const refreshUser = () => {
+    setUserObj(Object.assign({}, authService.currentUser));
+  };
   return (
     <>
       {init ? (
-        <Router isLoggedin={isLoggedin} useObj={useObj} />
+        <Router
+          isLoggedin={isLoggedin}
+          userObj={userObj}
+          refreshUser={refreshUser}
+        />
       ) : (
         "Initalizing..."
       )}
