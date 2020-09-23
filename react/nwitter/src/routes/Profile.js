@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authService, dbService } from "../mybase";
+import { authService } from "../mybase";
 import { useHistory } from "react-router-dom";
 
 const Profile = ({ userObj, refreshUser }) => {
