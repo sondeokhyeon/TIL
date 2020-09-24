@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 1024px;
+            margin: 0 auto;
+            box-sizing: content-box;
+            background-color: aliceblue;
+            border: 1px solid black;
+        }
+
+        h1 {
+            all: unset;
+            font-size: xx-large;
+            font-weight: 800;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            background-color: chocolate;
+            height: 50px;
+
+        }
+
+        .chat-join .list {
+            border-top: 1px solid black;
+            width: 100%;
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .chat-join>h1 {
+            float: right;
+            position: relative;
+            right: 15px;
+
+        }
+
+        .chat-join .list .chat {
+            display: flex;
+            flex-direction: row;
+            background-color: beige;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            border-bottom: 1px solid black;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .create-chat {
+            text-align: center;
+            height: 30px;
+            background-color: blanchedalmond;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Chat system</h1>
+    </div>
+
+    <section>
+        <div class="chat-join">
+            <h1>chat join</h1>
+            <div class="list" id="chats_container">
+                <div>Empty</div>
+            </div>
+        </div>
+        <div class="create-chat">
+            <input type="text" id="chat-id" placeholder="채팅방이름">
+            <input type="text" id="nick-id" placeholder="닉네임">
+            <button id="create">create Chat</button>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: '/isroom',
+                method: 'GET',
+                success: (result) => {
+                    if (result.length !== 0) {
+                        document.getElementById('chats_container').innerHTML = '';
+                        let elem = '';
+                        result.map(item => {
+                            console.log(item)
+                            elem += `<a class="chat" href="/join?id=${item.room_id}">
+                            <div class="title">${item.room_id}</div>
+                            <div class="time">${item.time}</div>
+                            </a>`
+                        })
+                        document.getElementById('chats_container').innerHTML = elem;
+                    }
+                    return;
+                },
+                error: (error) => {
+                    console.log(error)
+                }
+            })
+            console.log(location)
+        })
+        const cc = document.getElementById('create');
+        cc.onclick = () => {
+            const cid = document.getElementById('chat-id').value;
+            const nid = document.getElementById('nick-id').value;
+            $.ajax({
+                url: `/create?cid=${cid}&nid=${nid}`,
+                method: 'get',
+                success: (result) => {
+                    //console.log(result)
+                    location.href = `join?id=${result.cid}`
+                },
+            })
+        }
+    </script>
+    <!-- const socket = io();
+    socket.emit('c_create', {
+        cid: cid.value,
+        nid: nid.value
+    }, (callback) => {
+        if (callback) {
+            location.href = `join?id=${callback}`
+        } else {
+            alert(callback)
+        }
+    }) -->
+</body>
+
+</html>
