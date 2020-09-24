@@ -38,17 +38,25 @@ app.get("/join", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("connected");
 
   socket.on("join", (join_msg) => {
-    console.log(socket.id);
+    socket.join(join_msg)
+    console.log(socket.id, join_msg);
   });
 
   socket.on("chat message", (c_msg) => {
+
+    const { id, chat} = c_msg;
+
     console.log("is chat", c_msg);
-    socket.emit("chat message", c_msg);
+    //socket.emit("chat message", c_msg);
+    io.to(id).emit('chat message', {chat})
   });
 
+
+  socket.on('disconnect', () =>{
+    console.log(`${socket.id} is left`)
+  })
   // socket.on("c_create", (msg, callback) => {
   //   console.log(socket.id);
   //   rooms.push({

@@ -69,13 +69,14 @@
 
       $("form").submit(function (e) {
         e.preventDefault(); // prevents page reloading
-        socket.emit("chat message", $("#m").val());
+        socket.emit("chat message", {id, chat:$("#m").val()});
         $("#m").val("");
         return false;
       });
 
       socket.on("chat message", function (msg) {
-        $("#messages").append($("<li>").text(msg));
+        console.log(msg)
+        $("#messages").append($("<li>").text(msg.chat));
       });
     });
   </script>
