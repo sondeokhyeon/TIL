@@ -50,13 +50,13 @@ chatsio.on("connection", (socket) => {
     //   .emit("chat message", { chat: `welcome ${socket.id} ` });
     // name 안 room에게 송신
 
-    socket.emit("message", {
+    socket.emit("chat message", {
       user: "admin",
-      text: `webcome to the room `,
+      chat: `webcome to the room `,
     });
     socket.broadcast
       .to(join_msg)
-      .emit("message", { user: "admin", text: `, has joined` });
+      .emit("chat message", { user: "admin", chat: `, has joined` });
   });
 
   socket.on("chat message", (c_msg) => {
