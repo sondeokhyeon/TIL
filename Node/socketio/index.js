@@ -37,57 +37,44 @@ app.get("/join", (req, res) => {
   res.sendfile(__dirname + "/chat.html");
 });
 
-io.on("connection", (socket) => {
+const chatsio = io.of("/chats"); // namespace
+
+chatsio.on("connection", (socket) => {
+  console.log("connected!");
 
   socket.on("join", (join_msg) => {
-    socket.join(join_msg)
-    console.log(socket.id, join_msg);
+    //console.log("joinmsg", socket.id, join_msg);
+    socket.join(join_msg);
+    // chatsio
+    //   .in(join_msg)
+    //   .emit("chat message", { chat: `welcome ${socket.id} ` });
+    // name 안 room에게 송신
+
+    socket.emit("message", {
+      user: "admin",
+      text: `webcome to the room `,
+    });
+    socket.broadcast
+      .to(join_msg)
+      .emit("message", { user: "admin", text: `, has joined` });
   });
 
   socket.on("chat message", (c_msg) => {
+    const { id, chat } = c_msg;
 
-    const { id, chat} = c_msg;
-
-    console.log("is chat", c_msg);
+    //console.log("is chat", c_msg);
     //socket.emit("chat message", c_msg);
-    io.to(id).emit('chat message', {chat})
+    chatsio.to(id).emit("chat message", { chat });
+    // 특정 룸에게 송신
   });
 
-
-  socket.on('disconnect', () =>{
-    console.log(`${socket.id} is left`)
-  })
-  // socket.on("c_create", (msg, callback) => {
-  //   console.log(socket.id);
-  //   rooms.push({
-  //     room_id: msg.cid,
-  //     nick_id: msg.nid,
-  //     s_id: socket.id,
-  //     time: new Date(),
-  //   });
-  //   if (msg.cid === "123") {
-  //     return callback(false);
-  //   } else {
-  //     return callback(socket.id);
-  //   }
-  // });
+  socket.on("disconnect", () => {
+    // 접속해제시
+    console.log(`${socket.id} is gone`);
+  });
 });
 
-// NameSpace 1번
-// const namespace1 = io.of("namespace1");
-// // connection을 받으면, news 이벤트에 hello 객체를 담아 보낸다
-// namespace1.on("connection", (socket) => {
-//   console.log("connected1");
-//   socket.broadcast.emit("broad", "boradcast!");
-//   namespace1.emit("news", { hello: "Someone connected at namespace1" });
-// });
-// // NameSpace 2번
-// const namespace2 = io.of("namespace2");
-// // connection을 받으면, news 이벤트에 hello 객체를 담아 보낸다
-// namespace2.on("connection", (socket) => {
-//   console.log("connected2");
-//   namespace2.emit("news", { hello: "Someone connected at Namespace2" });
-// });
+//const noti = io.of("noti");
 
 server.listen(3000, () => {
   console.log("server start");
