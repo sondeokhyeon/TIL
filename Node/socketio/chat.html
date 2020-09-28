@@ -1,85 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket.IO chat</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        font: 13px Helvetica, Arial;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Socket.IO chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      form {
-        background: #000;
-        padding: 3px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
+    body {
+      font: 13px Helvetica, Arial;
+    }
 
-      form input {
-        border: 0;
-        padding: 10px;
-        width: 90%;
-        margin-right: 0.5%;
-      }
+    form {
+      background: #000;
+      padding: 3px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
 
-      form button {
-        width: 9%;
-        background: rgb(130, 224, 255);
-        border: none;
-        padding: 10px;
-      }
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 90%;
+      margin-right: 0.5%;
+    }
 
-      #messages {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
+    form button {
+      width: 9%;
+      background: rgb(130, 224, 255);
+      border: none;
+      padding: 10px;
+    }
 
-      #messages li {
-        padding: 5px 10px;
-      }
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
 
-      #messages li:nth-child(odd) {
-        background: #eee;
-      }
-    </style>
-  </head>
+    #messages li {
+      padding: 5px 10px;
+    }
 
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-      $(function () {
-        var socket = io("/chats");
-        const id = location.search.split("=")[1];
-        socket.emit("join", id);
+    #messages li:nth-child(odd) {
+      background: #eee;
+    }
 
-        $("form").submit(function (e) {
-          e.preventDefault(); // prevents page reloading
-          socket.emit("chat message", { id, chat: $("#m").val() });
-          $("#m").val("");
-          return false;
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.54);
+    }
+
+    .modal {
+      position: fixed;
+      width: 500px;
+      height: 100px;
+      background-color: antiquewhite;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .modal .head {
+      width: 100%;
+      background-color: #4b679a;
+      height: 100%;
+    }
+
+    .modal .head>div {
+      display: flex;
+      color: white;
+      font-weight: 600;
+      font-size: 20px;
+      justify-content: space-between;
+      padding: 0px 15px;
+      line-height: 60px;
+    }
+
+    .modal .body {
+      width: 100%;
+    }
+
+    .body>div>form {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .body>div>form input:nth-child(1) {
+      flex: 5;
+    }
+
+    .body>div>form input:nth-child(2) {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="messages"></ul>
+  <form action="" id="chat">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
+  <div class="background">
+    <div class="modal">
+      <div class="head">
+        <div>
+          <div>닉네임</div>
+          <div>닫기</div>
+        </div>
+      </div>
+      <div class="body">
+        <div>
+          <form id="nick_init">
+            <input type="text" id="nick" placeholder="채팅 닉네임을 입력하세요">
+            <input type="submit" value="사용하기">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    let nick = "";
+
+    function setNick() {
+      // await new Promise(resolve => setTimeout(resolve, 1500));
+      document.getElementById('nick_init').addEventListener('submit', (event) => {
+        event.preventDefault();
+        nick = document.getElementById('nick').value
+        document.querySelector('.background').style.display = 'none'
+        connectSocket();
+      })
+    }
+
+    function connectSocket() {
+      const socket = io("/chats");
+      const rid = location.search.split("=")[1];
+      socket.emit("join", rid);
+      chatMessage(socket, rid);
+    }
+
+    function chatMessage(socket, rid) {
+      $("#chat").submit(function (e) {
+        e.preventDefault(); // prevents page reloading
+        socket.emit("chat message", {
+          rid,
+          nick,
+          chat: $("#m").val()
         });
-
-        socket.on("chat message", function (msg) {
-          console.log(msg);
-          $("#messages").append($("<li>").text(msg.chat));
-        });
+        $("#m").val("");
+        return false;
       });
-    </script>
-  </body>
+
+      socket.on("chat message", function (msg) {
+        if (msg.nick === nick) {
+          console.log('내 메시지')
+        } else {
+          console.log('다른 사람 메시지')
+        }
+        $("#messages").append($("<li>").text(msg.chat));
+      });
+    }
+
+    async function init() {
+      await setNick();
+    }
+
+    $(function () {
+      init();
+    });
+  </script>
+</body>
+
 </html>
 
 <!-- 

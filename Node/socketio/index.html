@@ -89,6 +89,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
         $(function () {
+
+            if (location.search.split('=')[1]) {
+                alert('에러가 있네...')
+            }
+
             $.ajax({
                 url: '/isroom',
                 method: 'GET',
@@ -98,8 +103,8 @@
                         let elem = '';
                         result.map(item => {
                             console.log(item)
-                            elem += `<a class="chat" href="/join?id=${item.room_id}">
-                            <div class="title">${item.room_id}</div>
+                            elem += `<a class="chat" href="/join?rid=${item.room_id}">
+                            <div class="title">${item.room_title}</div>
                             <div class="time">${item.time}</div>
                             </a>`
                         })
@@ -120,9 +125,13 @@
                 url: `/create?cid=${cid}&nid=${nid}`,
                 method: 'get',
                 success: (result) => {
-                    //console.log(result)
-                    location.href = `join?id=${result.cid}`
-                },
+                    console.log(result)
+                    try {
+                        location.href = `join?rid=${result.room_id}`
+                    } catch (err) {
+                        console.log(err)
+                    }
+                }
             })
         }
     </script>

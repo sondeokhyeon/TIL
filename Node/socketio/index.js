@@ -21,30 +21,38 @@ app.get("/create", (req, res) => {
     const {
       query: { cid, nid },
     } = req;
-    cid, nid;
+    const room_id = uuid.v4();
+
     rooms.push({
-      room_id: cid,
-      nick_id: nid,
+      room_id,
+      room_title: cid,
+      nick_name: nid,
       time: new Date(),
     });
-    res.json({ result: "success", cid });
+    res.json({ result: "success", room_id });
   } catch (err) {
     console.log(err);
   }
 });
 
 app.get("/join", (req, res) => {
-  res.sendfile(__dirname + "/chat.html");
+  const {
+    query: { rid },
+  } = req;
+  const chk = rooms.find((r) => r.room_id === rid);
+  if (chk) {
+    res.sendfile(__dirname + "/chat.html");
+  } else {
+    res.redirect("/?err=n4");
+  }
 });
 
 const chatsio = io.of("/chats"); // namespace
 
 chatsio.on("connection", (socket) => {
-  console.log("connected!");
-
-  socket.on("join", (join_msg) => {
+  socket.on("join", (roomId) => {
     //console.log("joinmsg", socket.id, join_msg);
-    socket.join(join_msg);
+    socket.join(roomId);
     // chatsio
     //   .in(join_msg)
     //   .emit("chat message", { chat: `welcome ${socket.id} ` });
@@ -52,19 +60,19 @@ chatsio.on("connection", (socket) => {
 
     socket.emit("chat message", {
       user: "admin",
-      chat: `webcome to the room `,
+      chat: `welcome to the room `,
     });
     socket.broadcast
-      .to(join_msg)
+      .to(roomId)
       .emit("chat message", { user: "admin", chat: `, has joined` });
   });
 
   socket.on("chat message", (c_msg) => {
-    const { id, chat } = c_msg;
+    const { rid, nick, chat } = c_msg;
 
     //console.log("is chat", c_msg);
     //socket.emit("chat message", c_msg);
-    chatsio.to(id).emit("chat message", { chat });
+    chatsio.to(rid).emit("chat message", { chat, nick });
     // 특정 룸에게 송신
   });
 
