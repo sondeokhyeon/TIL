@@ -45,11 +45,23 @@
     }
 
     #messages li {
-      padding: 5px 10px;
+      padding: 15px 10px;
     }
 
-    #messages li:nth-child(odd) {
-      background: #eee;
+    #messages .ad {
+      text-align: center;
+      background-color: aliceblue;
+      color: darkviolet;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #messages .my {
+      text-align: right;
+    }
+
+    #messages .ot {
+      text-align: left;
     }
 
     .background {
@@ -145,7 +157,10 @@
     function connectSocket() {
       const socket = io("/chats");
       const rid = location.search.split("=")[1];
-      socket.emit("join", rid);
+      socket.emit("join", {
+        rid,
+        nick
+      });
       chatMessage(socket, rid);
     }
 
@@ -162,12 +177,17 @@
       });
 
       socket.on("chat message", function (msg) {
+        const li = document.createElement('li');
         if (msg.nick === nick) {
-          console.log('내 메시지')
+          li.classList.add('my')
+        } else if (msg.nick === '관리자') {
+          li.classList.add('ad')
         } else {
-          console.log('다른 사람 메시지')
+          li.classList.add('ot')
         }
-        $("#messages").append($("<li>").text(msg.chat));
+        li.innerText = `${msg.nick} : ${msg.chat}`
+
+        $("#messages").append(li);
       });
     }
 
@@ -182,32 +202,3 @@
 </body>
 
 </html>
-
-<!-- 
-<!DOCTYPE html>
-<html>
-
-<head>
-  <script src="/socket.io/socket.io.js"> </script>
-  <script>
-    function namespace(nsp) {
-      const namespace = io('/namespace' + nsp);
-      // news라는 이벤트를 받을 시 콘솔에 data.hello를 출력
-      namespace.on('news', (data) => {
-        console.log(data.hello);
-      });
-      namespace.on('broad', (msg) => {
-        console.log(msg)
-      })
-    }
-  </script>
-</head>
-
-<body>
-  <button onclick="namespace(1)">namespace1</button>
-  <button onclick="namespace(2)">namespace2</button>
-</body>
-
-</html>
-
--->

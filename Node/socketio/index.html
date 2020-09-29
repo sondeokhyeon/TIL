@@ -28,6 +28,11 @@
 
         }
 
+        .empty {
+            text-align: center;
+            padding: 15px;
+        }
+
         .chat-join .list {
             border-top: 1px solid black;
             width: 100%;
@@ -58,12 +63,8 @@
             text-align: center;
             height: 30px;
             background-color: blanchedalmond;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             height: 100%;
-
+            padding: 10px 0;
         }
     </style>
 </head>
@@ -77,12 +78,11 @@
         <div class="chat-join">
             <h1>chat join</h1>
             <div class="list" id="chats_container">
-                <div>Empty</div>
+                <div class="empty">Empty</div>
             </div>
         </div>
         <div class="create-chat">
             <input type="text" id="chat-id" placeholder="채팅방이름">
-            <input type="text" id="nick-id" placeholder="닉네임">
             <button id="create">create Chat</button>
         </div>
     </section>
@@ -120,9 +120,8 @@
         const cc = document.getElementById('create');
         cc.onclick = () => {
             const cid = document.getElementById('chat-id').value;
-            const nid = document.getElementById('nick-id').value;
             $.ajax({
-                url: `/create?cid=${cid}&nid=${nid}`,
+                url: `/create?cid=${cid}`,
                 method: 'get',
                 success: (result) => {
                     console.log(result)

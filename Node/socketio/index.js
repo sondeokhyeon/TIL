@@ -19,14 +19,13 @@ app.get("/isroom", (req, res) => {
 app.get("/create", (req, res) => {
   try {
     const {
-      query: { cid, nid },
+      query: { cid },
     } = req;
     const room_id = uuid.v4();
 
     rooms.push({
       room_id,
       room_title: cid,
-      nick_name: nid,
       time: new Date(),
     });
     res.json({ result: "success", room_id });
@@ -50,21 +49,20 @@ app.get("/join", (req, res) => {
 const chatsio = io.of("/chats"); // namespace
 
 chatsio.on("connection", (socket) => {
-  socket.on("join", (roomId) => {
-    //console.log("joinmsg", socket.id, join_msg);
-    socket.join(roomId);
-    // chatsio
-    //   .in(join_msg)
-    //   .emit("chat message", { chat: `welcome ${socket.id} ` });
-    // name 안 room에게 송신
+  socket.on("join", (roomInfo) => {
+    const { rid, nick } = roomInfo;
+
+    socket.join(rid); // namespace 안 room에 조인
+    const info = rooms.find((r) => r.room_id === rid);
 
     socket.emit("chat message", {
-      user: "admin",
-      chat: `welcome to the room `,
+      nick: "관리자",
+      chat: `${info.room_title}방에 오신걸 환영합니다.`,
     });
+
     socket.broadcast
-      .to(roomId)
-      .emit("chat message", { user: "admin", chat: `, has joined` });
+      .to(rid)
+      .emit("chat message", { nick: "관리자", chat: `${nick}, has joined` });
   });
 
   socket.on("chat message", (c_msg) => {
