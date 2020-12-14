@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <button v-on:click="minus()">빼기</button>
+      {{year}}
+      <button v-on:click="plus()">더하기</button>
+      <form v-on:submit="submit">
+          <!-- <input type="text" v-bind:value="text" @keyup="updateText"> -->
+          <input type="text" v-model="text">
+          {{text}}
+          <br>
+          <button>submit</button>
+      </form>
+
+    </div>
+    <script>
+      new Vue({
+          el:'#app', 
+          data : {
+            year : 2020,
+            text : '',
+          },
+          methods: {
+            plus()  {
+              return this.year += 1
+            },
+            minus() {
+              return this.year -= 1
+            },
+            submit(e) {
+              e.preventDefault();
+              alert(this.text)
+              console.log(1)
+            },
+//            updateText(event) {
+//             this.text = event.target.value
+//            }
+          } 
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{nextYear('안녕하세요')}}
+        <input :type="type" v-bind:value="inputData">
+        <a :href="link">NAVER</a>
+    </div>
+    <script>
+      new Vue({
+          el:'#app', 
+          data : {
+            person :{
+                name : 'hyeony',
+                age : 31
+            },
+            inputData: 500,
+            type:'number',
+            link:'https://www.naver.com',
+          }, 
+          methods : {
+            nextYear(greeting) {
+              return greeting + '! ' + this.person.name + ' 는 내년에 ' + (this.person.age + 1) + '살 입니다.'
+            }, 
+            otherMethod : function() {
+              this.nextYear();
+            }
+          }
+      })
+    </script>
+</body>
+</html>

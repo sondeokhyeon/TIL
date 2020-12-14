@@ -1,3 +1,5 @@
 Test/
 .vscode/
 .ipynb_checkpoints/
+.history
+.idea
