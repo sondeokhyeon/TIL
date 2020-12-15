@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>practice</title>
+    <style>
+        .red { 
+            color : red;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>watch&style&class</h1>
+    <div id="app">
+        {{msg}}
+        <br>
+        <button @click="changeMassage()">BTN</button>
+        <br>
+        {{updated}}
+        <div :class="{red: isred, bold: isBold}">Hello</div>
+        <button @click="update">Click</button>
+        <div :style="{color: color, fontSize:size}">Style</div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data : {
+                msg : "Hello",
+                updated : 'Nope!',
+                isred : false,
+                isBold : false,
+                color:'blue',
+                size : '30px'
+            },
+            methods : {
+                changeMassage() {
+                    this.msg = 'world!'
+                },
+                update() {
+                    this.isred = !this.isred;
+                    this.isBold = !this.isBold;
+                }
+            }, 
+            computed: {
+                //캐싱
+                reversedMessage() {
+                    return this.msg.split('').reverse().join('')
+                }
+            },
+            watch : {
+                msg(newValue, oldValue) {
+                    console.log(newValue, oldValue)
+                    this.updated = 'yes!'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

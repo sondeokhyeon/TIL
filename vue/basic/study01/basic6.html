@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>practice</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>vue instance</h1>
+    <div id="app1">
+        <v1_compo></v1_compo>
+    </div>
+    <div id="app2">
+        {{name}}
+        <button @click="app1Move">app1로 복사</button>
+        <btns></btns>
+    </div>
+    <script>
+
+        //전역 등록
+        Vue.component('btns', {
+            template:`
+                <div>
+                    {{name}}<br>
+                    <button @click="changeText">app1로 복사</button>
+                </div>
+            `,
+            data()  {
+                return {
+                    name:'test'
+                }
+            },
+            methods: {
+                changeText() {
+                    this.name = 'component';
+                }
+            }
+        })
+
+        //컴포넌트 준비
+        const v1compo = {
+            template:`
+                <div>
+                    {{name}}<br>
+                    <button @click="app2Move()">app1로 복사</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name:"helloworld111"
+                }
+            },
+            methods: {
+                app2Move() {
+                    v2.name = this.name;
+                }
+            }
+        }
+        //지역 컴포넌트 등록
+       const v1 = new Vue({
+            el:'#app1',
+            components: {
+                'v1_compo':v1compo
+            }
+        })
+
+       const v2 = new Vue({
+            el:'#app2',
+            data : {
+                name:"helloworld222"
+            },
+            methods: {
+                app1Move() {
+                    v1.name = this.name;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

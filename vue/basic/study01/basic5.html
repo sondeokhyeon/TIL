@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>practice</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>if&for</h1>
+    <div id="app">
+        <template v-if="number === 1">
+            <div>hello world</div>
+        </template>
+        <div v-else-if="number === 2">
+            2
+        </div>
+        <div v-else="number === 3">
+            none display
+        </div>
+        <div v-show="show">Yes</div>
+        <br>
+        <button @click="increaseNumber">btn</button>
+        <button @click="toggle">btn</button>
+        <div v-for="(pp, index) in peoples" :key="index">
+           <div>index : {{index}} name : {{ pp.name }} age : {{pp.age}} </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data : {
+                number : 1,
+                show : false,
+                peoples : [
+                    { name:'a', age:20 },
+                    { name:'b', age:21 },
+                    { name:'c', age:22 },
+                ]
+            },
+            methods: {
+                increaseNumber() {
+                    this.number ++;
+                },
+                toggle() {
+                    this.show = !this.show
+                }
+            }
+   
+        })
+    </script>
+</body>
+</html>
