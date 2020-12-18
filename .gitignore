@@ -3,3 +3,5 @@ Test/
 .ipynb_checkpoints/
 .history
 .idea
+target/
+*.iml
