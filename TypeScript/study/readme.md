@@ -55,21 +55,46 @@ noImplicitAny : Any 허용 여부
 ### 타입
 TS는 어노테이션을 통해서 타입을 지정할 수 있다.
 
-number  : 숫자형 타입
-string  : 문자형 타입
-boolean : true,false 만
-undefined : undefined
-null    : null
-object  : 원시타입 제외한 객체들 타입 
-symbol  : symbol함수 타입 
-any : 만능타입(기본 JS변수)
+number  : 숫자형 타입  
+string  : 문자형 타입  
+boolean : true,false 만  
+undefined : undefined  
+null    : null  
+object  : 원시타입 제외한 객체들 타입   
+symbol  : symbol함수 타입  
+any : 만능타입(기본 JS변수) 
 
-배열에도 지정할 수 있다.
-기본 예시 
-let arr: string[]; <== 이러면 문자열만 할당가능하다
-인라인 타입 
+배열에도 지정할 수 있다.  
+
+기본 예시  
+let arr: string[]; <== 이러면 문자열 배열만 할당가능하다  
+
+인라인 타입   
 let arr2: {name:string, socore:number};
 
-튜플
-let tuple: [number, string];
-타입을 고정시킨 배열이다
+튜플  
+let tuple: [number, string];  
+타입을 고정시킨 배열이다 
+
+### 인터페이스
+인터페이스는 타입을 지정하는 형태이다.  
+자바와 마찬가지로 구현체는 만들지 않지만
+
+클래스 뿐만이 아니라 함수에도 타입으로서 지정이 가능하다.
+
+        interface Human {
+            name : string;
+            eat(): void;
+        }
+
+        const human : Human = {
+            name : '홍길동',
+            eat()  {
+                console.log(`${this.name}이 밥을 먹는다.`)
+            },
+        }
+
+        const honggildong = human;
+        honggildong.eat();
+
+
