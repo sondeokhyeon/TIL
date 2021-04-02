@@ -1,6 +1,13 @@
+import { abMotion } from "./component/abstract.js"
+import buttonAction from './component/buttonAction.js' 
+
+class motion extends abMotion {
+    
+}
 
 function init() : void {
-    console.log('init')
+    new motion();
+    new buttonAction();
 }
 
 window.addEventListener('load', init)

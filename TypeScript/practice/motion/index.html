@@ -12,6 +12,9 @@
         .font-white {
             color:white;
         }
+        .textRight {
+            text-align:right;
+        }
         html, body, ul {
             padding: 0;
             margin : 0;
@@ -27,6 +30,11 @@
             width:1024px;
             height: inherit;
             margin: 0 auto;
+            background-color:#2f2f2f75;
+        }
+        .btn-cont {
+            background-color: transparent;
+            border-bottom:1px solid #ccc;
         }
         .btn-cont ul {
             padding : 30px 0px;
@@ -39,25 +47,56 @@
             padding: 0px 50px;
         }
 
+        .modal-background {
+            position : fixed;
+            width: 100%;
+            height: 100%;
+            top:0;
+            display:none;
+        }
+
+        .modal-container {
+            position : fixed;
+            width: 20%;
+            height: 50%;
+            top:0px;
+            transform: translate(200%, 50%);
+            display:none;
+        }
+        
+        .modal {
+            background-color: white;
+            width: 300px;
+            padding: 5px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .modal .body {
+            padding-bottom: 30px;
+        }
+
     </style>
 </head>
 <body>
     <section class="bg-container">
-        <div class="container br-white">
-            <header class="btn-cont font-white br-white">
+        <div class="container">
+            <header class="btn-cont font-white">
                 <h1>MOTION</h1>
                 <ul>
                     <li>
-                        <button>IMAGE</button>
+                        <button id="image-btn">IMAGE</button>
                     </li>
                     <li>
-                        <button>VIDEO</button>
+                        <button id="video-btn">VIDEO</button>
                     </li>
                     <li>
-                        <button>NOTE</button>
+                        <button id="note-btn">NOTE</button>
                     </li>
                     <li>
-                        <button>TASK</button>
+                        <button id="task-btn">TASK</button>
                     </li>
                 </ul>
             </header>
@@ -66,6 +105,26 @@
             </article>
         </div>
     </section>
+    <div>
+        <div class="modal-background" id="modal-background"></div>
+        <div class="modal-container" id="modal-container">
+            <div class="modal">
+                <div class="head">
+                    <h3 id="modal-title"></h3>
+                </div>
+                <div class="body">
+                    <div id="input-cont">
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="textRight">
+                        <button id="modal-upload">추가</button>
+                        <button id="modal-close">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="module" src="static/index.js"></script>
 </body>
 </html>
