@@ -1,10 +1,13 @@
 
+
 type htmlElems = HTMLElement | null;
 
-interface Items {
+type Items = {
     index : number;
     type : string;
     url? : string;
     title : string;
     content? : string;
 }
+
+export { htmlElems, Items }

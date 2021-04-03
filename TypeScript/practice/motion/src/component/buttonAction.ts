@@ -1,4 +1,6 @@
 
+import { htmlElems, Items } from "../cmm-types";
+
 type actionType = 'image' | 'video' | 'note' | 'task';
 
 class buttonAction {
@@ -6,8 +8,8 @@ class buttonAction {
     private readonly VIDEO_BTN : htmlElems = document.getElementById('video-btn')
     private readonly NOTE_BTN : htmlElems = document.getElementById('note-btn')
     private readonly TASK_BTN : htmlElems = document.getElementById('task-btn')
-    private readonly modalContainer : htmlElems = document.getElementById('modal-container') 
-    private readonly inputContainer : htmlElems = document.getElementById('input-cont');
+    private readonly modalContainer  = document.getElementById('modal-container') as HTMLElement
+    private readonly inputContainer  = document.getElementById('input-cont') as HTMLElement
     private readonly modalBackground = document.getElementById('modal-background') as HTMLElement
 
     constructor() {
@@ -47,7 +49,9 @@ class buttonAction {
             this.modalBackground.style.display = 'block';
         }
         this.modalBackground.addEventListener('click', () => {
-            this.modalClose();
+            this.inputContainer.innerHTML = '';
+            this.modalContainer.style.display = 'none'
+            this.modalBackground.style.display = 'none'
         })
     }
 
@@ -62,9 +66,9 @@ class buttonAction {
         }
     }
 
-    submit(type : actionType) : Items {
+    // submit(type : actionType) : Items {
         
-    }
+    // }
 }
 
 export default buttonAction;

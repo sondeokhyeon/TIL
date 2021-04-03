@@ -1,3 +1,4 @@
+import { htmlElems, Items } from "../cmm-types";
 abstract class abMotion {
     private lists: Items[] = [];
 
