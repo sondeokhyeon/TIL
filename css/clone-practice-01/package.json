@@ -1,0 +1,25 @@
+{
+  "name": "clone-practice-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node-sass" : "node-sass",
+    "sass" : "node-sass -w styles/main.scss ./style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sondeokhyeon/TIL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sondeokhyeon/TIL/issues"
+  },
+  "homepage": "https://github.com/sondeokhyeon/TIL#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
