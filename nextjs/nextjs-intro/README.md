@@ -1,0 +1,1 @@
+This project is based on the Nomad Coder Next Js.
