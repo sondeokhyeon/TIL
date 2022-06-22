@@ -11,21 +11,28 @@ public class HelloJPA {
         EntityTransaction tx = em.getTransaction();
 
         try {
-            tx.begin();
-//            Member member = new Member();
+//            tx.begin();
+//                Member member = new Member();
+//                member.setId(1L);
+//                member.setName("홍길동");
 //
-//            member.setId(1L);
-//            member.setName("홍길동");
-//            em.persist(member);
+//                Member member1 = new Member();
+//                member1.setId(2L);
+//                member1.setName("홍길동");
+//
+//                em.persist(member);
+//                em.persist(member1);
+//            tx.commit();
 
-            Member findMember = em.find(Member.class, 1L);
-            System.out.println(findMember.getName());
-            findMember.setName("홍길동");
-            System.out.println(findMember.getName());
+            tx.begin();
+                Member member2 = em.find(Member.class, 1L);
+                member2.setName("김길동!");
             tx.commit();
 
-
-
+            tx.begin();
+                Member member3 = em.find(Member.class, 2L);
+                em.remove(member3);
+            tx.commit();
 
         } catch (Exception e) {
             e.printStackTrace();
