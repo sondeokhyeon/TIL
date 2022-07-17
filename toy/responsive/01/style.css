@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap");
 
+:root {
+  --c-000: #000;
+  --c-222: #222;
+  --c-333: #333;
+  --c-888: #888;
+  --c-a79a2d: #a79a2d;
+}
+
 /* common styles */
 * {
   margin: 0;
@@ -22,7 +30,7 @@ html {
   text-align: center;
   text-transform: capitalize;
   letter-spacing: 0.5rem;
-  text-shadow: 0.3rem 0.3rem 0.3rem #000;
+  text-shadow: 0.3rem 0.3rem 0.3rem var(--c-000);
   transition: transform 0.3s;
 }
 
@@ -32,7 +40,7 @@ html {
 .section-1 {
   width: 100%;
   height: 100vh;
-  background-color: #333;
+  background-color: var(--c-333);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -41,10 +49,10 @@ html {
 
 .section-1-icons i {
   font-size: 35rem;
-  color: #a79a2d;
+  color: var(--c-a79a2d);
   position: absolute;
   transform: translate(-50%, -50%) scale(0);
-  text-shadow: 0.2rem 0.2rem 0.2rem #000;
+  text-shadow: 0.2rem 0.2rem 0.2rem var(--c-000);
 }
 
 .section-1-icons i.change {
@@ -58,7 +66,7 @@ html {
 .section-2 {
   width: 100%;
   height: 100vh;
-  background-color: #222;
+  background-color: var(--c-222);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,13 +80,13 @@ html {
 
 .card {
   width: 30rem;
-  background-color: #a79a2d;
+  background-color: var(--c-a79a2d);
   padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 1rem 1rem 1rem #000;
+  box-shadow: 1rem 1rem 1rem var(--c-000);
   position: relative;
   transform: rotateY(20deg) skewX(-2deg);
   transition: transform 0.5s, box-shadow 0.5s;
@@ -86,7 +94,7 @@ html {
 
 .card:hover {
   transform: rotateY(20deg) skewX(-2deg) translateY(-3rem);
-  box-shadow: 2rem 2rem 2rem #000;
+  box-shadow: 2rem 2rem 2rem var(--c-000);
 }
 
 .card::before {
@@ -99,7 +107,7 @@ html {
   top: 0;
   transform: skewY(45deg);
   transform-origin: right;
-  box-shadow: -0.1rem -0.1rem 0.1rem #000;
+  box-shadow: -0.1rem -0.1rem 0.1rem var(--c-000);
 }
 
 .card::after {
@@ -112,7 +120,7 @@ html {
   left: 0;
   transform: skewX(45deg);
   transform-origin: bottom;
-  box-shadow: -0.1rem -0.1rem 0.1rem #000;
+  box-shadow: -0.1rem -0.1rem 0.1rem var(--c-000);
 }
 
 .card-img {
@@ -126,7 +134,7 @@ html {
   letter-spacing: 0.5rem;
   color: #111;
   margin: 2rem 0;
-  text-shadow: 0.15rem 0.15rem 0.15rem #000;
+  text-shadow: 0.15rem 0.15rem 0.15rem var(--c-000);
 }
 .card-btn {
   width: 70%;
@@ -140,14 +148,14 @@ html {
   border: none;
   padding: 0.5rem 0;
   cursor: pointer;
-  box-shadow: -0.2rem -0.2rem 0.2rem #000;
+  box-shadow: -0.2rem -0.2rem 0.2rem var(--c-000);
 }
 
 /* End of section 2 */
 
 /* section 3 */
 .section-3 {
-  background-color: #333;
+  background-color: var(--c-333);
   padding: 5rem 0;
 }
 
@@ -247,3 +255,77 @@ html {
 }
 
 /* End of section 3 */
+
+/* Section 4 */
+.section-4 {
+  width: 100%;
+  height: 30vh;
+  background-color: var(--c-222);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 3rem 0;
+  position: relative;
+}
+
+.section-4-text {
+  text-transform: uppercase;
+}
+
+.section-4-heading {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--c-a79a2d);
+}
+
+.section-4-paragraph {
+  font-size: 1.2rem;
+  color: var(--c-888);
+}
+
+.signup-form {
+  display: flex;
+  align-items: center;
+}
+
+.signup-form-input {
+  width: 35rem;
+  height: 5rem;
+  padding: 1rem;
+  border: 0.2rem solid var(--c-a79a2d);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: var(--c-a79a2d);
+}
+
+.signup-form-input::placeholder {
+  color: var(--c-a79a2d);
+}
+
+.signup-form-btn {
+  position: relative;
+  left: -4.5rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--c-333);
+  color: var(--c-a79a2d);
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 3rem;
+  font-size: 1.7rem;
+  font-weight: 200;
+  color: #eee;
+  letter-spacing: 0.1rem;
+  border-top: 0.1rem solid #888;
+  padding-top: 6rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* End of Section 4 */
