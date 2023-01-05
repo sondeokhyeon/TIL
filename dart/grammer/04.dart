@@ -24,5 +24,11 @@ void main(List<String> args) {
   ]; // List<Map<String,Object>>
   print(listMap); 
 
-
+   // Java나 JS에서 처럼 중복 제거를 위해 Set도 사용이 가능하다 
+   Set<int> number = {1,2,3,4};
+   number.add(1);
+   number.add(2);
+   number.add(5);
+   print(number);
+    
 }
