@@ -16,5 +16,11 @@ void main(List<String> args) {
 
     print(name2);
     print(age2);
-    
+
+    // 모든 타입을 다 할당이 가능한 타입이 변수도 있다 
+    // dynamic 타입인데 너무 남용하지 않는것이 좋다.
+    dynamic vars = 'name';
+    vars = 123;
+    vars = true;
+    print(vars); 
 }

@@ -11,4 +11,10 @@ void main(List<String> args) {
     name2 = 'name2';
     print(name2);
     // name2 = 'rename2'; 이것 역시 에러다 
+
+    const name3 = 'name3';
+    // const는 final과 비슷하나 컴파일시 체크하는 변수이다. 
+    // 즉 API 통신과 같이 나중에 할당이 된다면 에러가 난다 
+    print(name3);
+    
 }
