@@ -60,3 +60,13 @@ test("toMatch 문자열이 포함되어 있는지 확인", () => {
   const n = "Hello World";
   expect(n).toMatch(/Hello/);
 });
+
+test("toContain 배열에 요소가 포함되어 있는지 확인", () => {
+  const user = "Mike";
+  const users = ["Mike", "Tom", "Jane"];
+  expect(users).toContain(user);
+});
+
+test("toThrow 에러가 발생하는지 확인", () => {
+  expect(() => fn.throwErr()).toThrow("err");
+});
