@@ -1,6 +1,7 @@
 const fn = require("./fn");
 
 test("1 is 1", () => {
+  // 특정 값이 정해진 값과 같은지 비교할 때는 toBe를 사용한다.
   expect(1).toBe(1);
 });
 
