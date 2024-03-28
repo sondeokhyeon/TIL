@@ -5,31 +5,58 @@ test("name and age are set correctly", () => {
   expect(fn.makeUser("Mike", 30)).toEqual({ name: "Mike", age: 30 });
 });
 
-//tobeNull
 test("null", () => {
   const n = null;
   expect(n).toBeNull();
 });
 
-//tobeUndefined
-test("undefined", () => {
+test("tobeUndefined", () => {
   const n = undefined;
   expect(n).toBeUndefined();
 });
-//tobeDefined
-test("defined", () => {
+
+test("tobeDefined", () => {
   const n = 1;
   expect(n).toBeDefined();
 });
 
-//tobeTruthy
-test("not zero", () => {
+test("tobeTruthy", () => {
   const n = 1;
   expect(n).toBeTruthy();
 });
 
 //tobeFalsy 0, undefined, null, false, NaN
-test("0", () => {
+test("tobeFalsy", () => {
   const n = 0;
   expect(n).toBeFalsy();
+});
+
+test("toBeGreaterThan 크다", () => {
+  const n = "THE_BLACK";
+  expect(n.length).toBeGreaterThan(3);
+});
+
+test("toBeGreaterThanOrEqual 크거나 같다", () => {
+  const n = "THE_BLACK";
+  expect(n.length).toBeGreaterThan(6);
+});
+
+test("toBeLessThan 작다", () => {
+  const n = "THE_BLACK";
+  expect(n.length).toBeGreaterThan(1);
+});
+
+test("toBeLessThanOrEqual 작거나 같다", () => {
+  const n = "THE_BLACK";
+  expect(n.length).toBeGreaterThan(6);
+});
+
+test("toBeCloseTo 근사값에 가까운지 확인", () => {
+  const n = 0.1 + 0.2;
+  expect(n).toBeCloseTo(0.3);
+});
+
+test("toMatch 문자열이 포함되어 있는지 확인", () => {
+  const n = "Hello World";
+  expect(n).toMatch(/Hello/);
 });
