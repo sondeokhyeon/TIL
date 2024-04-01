@@ -7,3 +7,4 @@ target/
 .metadata
 node_modules
 temp/
+*storybook.log
