@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MyPage from "./MyPage";
+import MyPage from "../components/MyPage";
 
 test("My Page login status", () => {
   render(<MyPage user={{ name: "mike" }} />);

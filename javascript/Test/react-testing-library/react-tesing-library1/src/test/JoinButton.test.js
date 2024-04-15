@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import JoinButton from "./JoinButton";
+import JoinButton from "../components/JoinButton";
 
 test("JoinButton disable test", () => {
   render(<JoinButton age={10} />);
