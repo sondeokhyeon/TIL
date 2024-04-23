@@ -20,3 +20,15 @@ test("button click", async () => {
     expect(buttonEl).toHaveTextContent("Logout");
   });
 });
+
+test("button keyboard click", async () => {
+  render(<Login />);
+  const buttonEl = screen.getByRole("button");
+  act(() => {
+    user.tab(); // focus
+    user.keyboard(" ");
+  });
+  await waitFor(() => {
+    expect(buttonEl).toHaveTextContent("Logout");
+  });
+});
