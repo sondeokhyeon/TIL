@@ -16,7 +16,7 @@ class CategoryScreen extends StatelessWidget {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: [
+        children: const [
           Text(
             '1',
             style: TextStyle(color: Colors.white),
