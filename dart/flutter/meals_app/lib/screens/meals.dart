@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/meal_details.dart';
 import 'package:meals_app/wigets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
@@ -12,6 +13,14 @@ class MealsScreen extends StatelessWidget {
   final String title;
   final List<Meal> meals;
 
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => MealsDetailScreen(meal: meal),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget content = Center(
@@ -23,7 +32,7 @@ class MealsScreen extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .headlineLarge!
-                .copyWith(color: Theme.of(context).colorScheme.onBackground),
+                .copyWith(color: Theme.of(context).colorScheme.onSurface),
           ),
           const SizedBox(height: 20),
           Text(
@@ -31,7 +40,7 @@ class MealsScreen extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge!
-                .copyWith(color: Theme.of(context).colorScheme.onBackground),
+                .copyWith(color: Theme.of(context).colorScheme.onSurface),
           )
         ],
       ),
@@ -42,6 +51,9 @@ class MealsScreen extends StatelessWidget {
         itemCount: meals.length,
         itemBuilder: (ctx, index) => MealItem(
           meal: meals[index],
+          onSelectMeal: (meal) {
+            selectMeal(context, meal);
+          },
         ),
       );
     }
