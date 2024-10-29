@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/screens/tabs.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
@@ -22,7 +23,11 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(const App());
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
