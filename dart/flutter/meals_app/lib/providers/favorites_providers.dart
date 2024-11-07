@@ -4,7 +4,7 @@ import 'package:meals_app/models/meal.dart';
 class FavoritesMealsNotifier extends StateNotifier<List<Meal>> {
   FavoritesMealsNotifier() : super([]);
 
-  bool toggleMealFavoritesStatusd(Meal meal) {
+  bool toggleMealFavoritesStatus(Meal meal) {
     final mealIsFavorite = state.contains(meal);
     if (mealIsFavorite) {
       state = state.where((m) => m.id != meal.id).toList();
