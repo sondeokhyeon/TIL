@@ -13,28 +13,17 @@ class GroceriesList extends StatelessWidget {
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: groceryItems.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      color: groceryItems[index].category.color,
-                      height: 20,
-                      width: 20,
-                      margin: const EdgeInsets.only(right: 20),
-                    ),
-                    Text(groceryItems[index].name)
-                  ],
-                ),
-                Text(groceryItems[index].quantity.toString())
-              ],
-            ),
-          );
-        },
+        itemBuilder: (BuildContext context, int index) => ListTile(
+          leading: Container(
+            width: 24,
+            height: 24,
+            color: groceryItems[index].category.color,
+          ),
+          title: Text(groceryItems[index].name),
+          trailing: Text(
+            groceryItems[index].quantity.toString(),
+          ),
+        ),
       ),
     );
   }
