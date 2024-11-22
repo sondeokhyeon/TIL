@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/data/dummy_items.dart';
 import 'package:shopping_app/widgets/new_item.dart';
 import 'package:shopping_app/models/grocery_item.dart';
 
@@ -23,12 +22,37 @@ class _GroceriesListState extends State<GroceriesList> {
     if (newItem == null) return;
 
     setState(() {
-      groceryItems.add(newItem);
+      _groceryItems.add(newItem);
     });
   }
 
   @override
   Widget build(context) {
+    Widget content = const Center(
+      child: Text(
+        'Not found the groceries',
+        style: TextStyle(color: Colors.white70, fontSize: 24),
+      ),
+    );
+
+    if (_groceryItems.isNotEmpty) {
+      content = ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        itemCount: _groceryItems.length,
+        itemBuilder: (BuildContext context, int index) => ListTile(
+          leading: Container(
+            width: 24,
+            height: 24,
+            color: _groceryItems[index].category.color,
+          ),
+          title: Text(_groceryItems[index].name),
+          trailing: Text(
+            _groceryItems[index].quantity.toString(),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Groceries'),
@@ -39,28 +63,7 @@ class _GroceriesListState extends State<GroceriesList> {
           )
         ],
       ),
-      body: _groceryItems.isEmpty
-          ? const Center(
-              child: Text(
-                'Not found the groceries',
-                style: TextStyle(color: Colors.white70, fontSize: 24),
-              ),
-            )
-          : ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              itemCount: _groceryItems.length,
-              itemBuilder: (BuildContext context, int index) => ListTile(
-                leading: Container(
-                  width: 24,
-                  height: 24,
-                  color: _groceryItems[index].category.color,
-                ),
-                title: Text(_groceryItems[index].name),
-                trailing: Text(
-                  _groceryItems[index].quantity.toString(),
-                ),
-              ),
-            ),
+      body: content,
     );
   }
 }
