@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopping_app/widgets/groceries_list.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
