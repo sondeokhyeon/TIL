@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shopping_app/data/categories.dart';
-import 'package:shopping_app/models/category.dart';
+
 import 'package:shopping_app/widgets/new_item.dart';
 import 'package:shopping_app/models/grocery_item.dart';
 
@@ -17,6 +17,7 @@ class GroceriesList extends StatefulWidget {
 
 class _GroceriesListState extends State<GroceriesList> {
   List<GroceryItem> _groceryItems = [];
+  var _isLoading = true;
 
   @override
   void initState() {
@@ -33,6 +34,7 @@ class _GroceriesListState extends State<GroceriesList> {
     final Map<String, dynamic> listData = json.decode(r.body);
     //_groceryItems
     final List<GroceryItem> loadItems = [];
+
     for (final item in listData.entries) {
       final category = categories.entries
           .firstWhere(
@@ -50,6 +52,7 @@ class _GroceriesListState extends State<GroceriesList> {
     }
     setState(() {
       _groceryItems = loadItems;
+      _isLoading = false;
     });
   }
 
@@ -83,6 +86,10 @@ class _GroceriesListState extends State<GroceriesList> {
         style: TextStyle(color: Colors.white70, fontSize: 24),
       ),
     );
+
+    if (_isLoading) {
+      content = const Center(child: CircularProgressIndicator());
+    }
 
     if (_groceryItems.isNotEmpty) {
       content = ListView.builder(
