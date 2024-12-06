@@ -78,10 +78,22 @@ class _GroceriesListState extends State<GroceriesList> {
     });
   }
 
-  void _removeItem(GroceryItem item) {
+  void _removeItem(GroceryItem item) async {
+    final index = _groceryItems.indexOf(item);
     setState(() {
       _groceryItems.remove(item);
     });
+    final url = Uri.https(
+      dotenv.get('API_URL'),
+      'shopping-lit/${item.id}.json',
+    );
+    final r = await http.delete(url);
+
+    if (r.statusCode >= 400) {
+      setState(() {
+        _groceryItems.insert(index, item);
+      });
+    }
   }
 
   @override
