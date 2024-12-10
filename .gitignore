@@ -8,3 +8,4 @@ target/
 node_modules
 temp/
 *storybook.log
+dart/flutter/shopping_app/.env
