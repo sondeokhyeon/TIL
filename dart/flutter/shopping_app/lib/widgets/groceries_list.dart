@@ -37,8 +37,13 @@ class _GroceriesListState extends State<GroceriesList> {
         _error = 'Failed to fetch data';
       });
     }
+    if (r.body == 'null') {
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    }
     final Map<String, dynamic> listData = json.decode(r.body);
-    //_groceryItems
     final List<GroceryItem> loadItems = [];
 
     for (final item in listData.entries) {
@@ -85,7 +90,7 @@ class _GroceriesListState extends State<GroceriesList> {
     });
     final url = Uri.https(
       dotenv.get('API_URL'),
-      'shopping-lit/${item.id}.json',
+      'shopping-list/${item.id}.json',
     );
     final r = await http.delete(url);
 
