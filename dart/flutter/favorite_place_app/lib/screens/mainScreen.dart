@@ -1,5 +1,6 @@
 import 'package:favorite_place_app/models/place.dart';
 import 'package:favorite_place_app/providers/place_provider.dart';
+import 'package:favorite_place_app/screens/addScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +12,14 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
+  void newPlace() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => AddScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Place> placeList = ref.watch(placeProvider);
@@ -23,7 +32,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              print('hello');
+              newPlace();
             },
           )
         ],
