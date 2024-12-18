@@ -1,3 +1,5 @@
+import 'package:favorite_place_app/models/place.dart';
+import 'package:favorite_place_app/providers/place_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +13,8 @@ class MainScreen extends ConsumerStatefulWidget {
 class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    final List<Place> placeList = ref.watch(placeProvider);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 2.0,
@@ -24,7 +28,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           )
         ],
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            for (final place in placeList) Text(place.title),
+          ],
+        ),
+      ),
     );
   }
 }
