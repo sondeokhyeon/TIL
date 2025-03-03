@@ -24,7 +24,7 @@ export const Transition = () => {
     }
 
     return (
-        <>
+        <div>
             <button onClick={v18Action}>Action1</button>
             <button onClick={v19Action}>Action2</button>
             <div>
@@ -32,7 +32,7 @@ export const Transition = () => {
                     {state1} {state2}
                 </div>}
             </div>
-        </>
+        </div>
     )
 }
 
