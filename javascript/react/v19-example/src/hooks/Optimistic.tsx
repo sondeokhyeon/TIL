@@ -1,4 +1,5 @@
 import { useState, useOptimistic, startTransition } from "react"
+import { delay } from "../utils/delay";
 
 
 export const Optimistic = () => {
@@ -19,8 +20,8 @@ export const Optimistic = () => {
 
             try {
                 // 서버 요청 시뮬레이션 (1초 지연)
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                throw new Error('error')
+                await delay(1000)
+                // throw new Error('error')
                 // 실제 상태 업데이트
                 setIsActive(!isActive);
             } catch (error) {
@@ -33,13 +34,13 @@ export const Optimistic = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{
+            <button style={{
                 width: '30px', height: '30px', border: '1px solid black',
                 ...(optimisticIsOn && { background: 'black' })
             }}
                 onClick={() => {
                     toggleWithDelay()
-                }} ></div>
+                }} ></button>
         </div >
     )
 }
